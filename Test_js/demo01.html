@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+body,p,ul,input{margin: 0; padding:0;}
+body{font:12px Arial,"宋体";}
+li{list-style:none;}
+a{text-decoration:none;}
+input{border:none;}
+.clearFix:{zoom:1;}
+.clearFix:after{content:""; display:block; clear: both;}
+
+#wrap{width:715px; height:420px;background: #efefef; margin:17px 12px; padding-left:25px; position: relative; overflow: hidden;}
+#content{font-family: "微软雅黑";}
+#content header{padding:20px 0;}
+#content p{float:left; width:285px; font-size:24px; font-weight: bold; line-height: 34px; color:#000;}
+#content form{float:left; width:100px;}
+#content input{width:100px; font-size: 12px; color:#fff; line-height: 40px; background: #f00;}
+#box{width:100px; height:100px; border:4px solid #393129; background: #fff;}
+
+#mask{width:740px; height:420px;background: #000; opacity:.4; position: absolute; left:0; top:0; display: none;}
+#alert{width:300px; height:192px; border:20px solid #9c949c; background: #fff; position: absolute; left:370px; top:149px; font-family: "微软雅黑"; padding-top: 8px; display: none;}
+#alert li{height:32px; margin:8px 0;}
+#alert .text{float:left;}
+#alert p{font-size:16px; color:#000; line-height: 28px;}
+#alert .text150 p{width:150px; text-indent: 33px;}
+#alert .text148 p{width:150px; text-indent: 35px;}
+#alert li a{float:left; margin-right: 5px; text-align: center;}
+#alert .text150 a{width:34px; line-height: 30px;}
+#toRed{background: #9cce00; color:#fff; border:1px solid  #9cce00;}
+#toYellow{background: #efbd00; color: #ff0; border:1px solid  #efbd00;}
+#toBlue{background: #5a94ef; color:#fff; border:1px solid  #5a94ef;}
+#alert .text148 a{width:34px; border:1px solid #c0c0c0; background: #efefef; line-height: 30px; color:#808080;}
+.btn{padding:14px 88px;}
+.btn input{width:60px; height:30px; background: #002952; color:#fff; text-align: center;}
+</style>
+<script type="text/javascript">
+window.onload = function ()
+{
+	var oClick=document.getElementById('click'),
+		oAlert=document.getElementById('alert'),
+		oMask=document.getElementById('mask');
+
+	oClick.onclick = function (){
+		oAlert.style.display="block";
+		oMask.style.display="block";
+	}
+
+	oMask.onclick = function (){
+		oMask.style.display="none";
+		oAlert.style.display="none"
+	}
+
+	var oRed=document.getElementById('toRed'),
+		oYellow=document.getElementById('toYellow'),
+		oBlue=document.getElementById('toBlue'),
+		oBox=document.getElementById('box');
+
+	oRed.onmouseover = function (){
+		oRed.style.background="#f00";
+		oRed.style.borderColor="#000";
+	}
+	oRed.onmouseout = function (){
+		oRed.style.background="#9cce00";
+		oRed.style.borderColor="#9cce00";
+	}
+	oRed.onclick = function (){
+		oBox.style.background="#f00";
+	}
+	oYellow.onmouseover = function (){
+		oYellow.style.cssText="background:#ff0;borderColor:#000;color:#000;";
+	}
+
+	oYellow.onmouseout = function (){
+		oYellow.style.cssText="background:#efbd00;borderColor:#efbd00;color:#ff0;";
+	}
+
+	oYellow.onclick = function (){
+		oBox.style.background="#ff0";
+	}
+
+	oBlue.onmouseover = function (){
+		oBlue.style.background="#00f";
+		oBlue.style.borderColor="#000";
+	}
+
+	oBlue.onmouseout = function (){
+		oBlue.style.background="#5a94ef";
+		oBlue.style.borderColor="#5a94ef";
+	}
+
+	oBlue.onclick = function (){
+		oBox.style.background="#00f";
+	}
+	var oW200=document.getElementById('setW200'),
+		oW300=document.getElementById('setW300'),
+		oW400=document.getElementById('setW400');
+
+	oW200.onmouseover = function (){
+		oW200.style.cssText="background:#ef9400;border-color:#000;color:#000;";
+	}
+
+	oW200.onmouseout = function (){
+		oW200.style.cssText="background:#efefef;border-color:#c0c0c0;color:#808080;";
+	}
+	oW300.onmouseover = function (){
+		oW300.style.cssText="background:#ef9400;border-color:#000;color:#000;";
+	}
+
+	oW300.onmouseout = function (){
+		oW300.style.cssText="background:#efefef;border-color:#c0c0c0;color:#808080;";
+	}
+	oW400.onmouseover = function (){
+		oW400.style.cssText="background:#ef9400;border-color:#000;color:#000;";
+	}
+
+	oW400.onmouseout = function (){
+		oW400.style.cssText="background:#efefef;border-color:#c0c0c0;color:#808080;";
+	}
+
+	oW200.onclick = function (){
+		oBox.style.width="200px";
+	}
+
+	oW300.onclick = function (){
+		oBox.style.width="300px";
+	}
+
+	oW400.onclick = function (){
+		oBox.style.width="400px";
+	}
+
+	var oH200=document.getElementById('setH200'),
+		oH300=document.getElementById('setH300'),
+		oH400=document.getElementById('setH400');
+
+	oH200.onmouseover = function (){
+		oH200.style.cssText="background:#ef9400;border-color:#000;color:#000;";
+	}
+
+	oH200.onmouseout = function (){
+		oH200.style.cssText="background:#efefef;border-color:#c0c0c0;color:#808080;";
+	}
+	oH300.onmouseover = function (){
+		oH300.style.cssText="background:#ef9400;border-color:#000;color:#000;";
+	}
+
+	oH300.onmouseout = function (){
+		oH200.style.cssText="background:#efefef;border-color:#c0c0c0;color:#808080;";
+	}
+	oH400.onmouseover = function (){
+		oH400.style.cssText="background:#ef9400;border-color:#000;color:#000;";
+	}
+
+	oH400.onmouseout = function (){
+		oH400.style.cssText="background:#efefef;border-color:#c0c0c0;color:#808080;";
+	}
+
+	oH200.onclick = function (){
+		oBox.style.height="200px";
+	}
+
+	oH300.onclick = function (){
+		oBox.style.height="300px";
+	}
+
+	oH400.onclick = function (){
+		oBox.style.height="400px";
+	}
+	
+	var oRecover=document.getElementById('recover'),
+		oConfirm=document.getElementById('confirm');
+
+	oRecover.onclick = function (){
+		oBox.style.cssText="width:100px; height:100px; background:#fff;";
+	}
+
+	oConfirm.onclick = function (){
+		oAlert.style.display="none";
+		oMask.style.display="none";
+	}
+}
+</script>
+</head>
+<body>
+<section id="wrap">
+	<div id="content">
+		<header class="clearFix">
+			<p>请为下面的DIV设置样式：</p>
+			<form>
+				<input type="button" value="点击设置" id="click" />
+			</form>
+		</header>
+		<div id="box"></div>
+	</div>
+	<div id="mask"></div>
+	<div id="alert">
+		<ul>
+			<li class="background text150">
+				<p class="text">请选择背景色：</p>
+				<a href="#" id="toRed">红</a>
+				<a href="#" id="toYellow">黄</a>
+				<a href="#" id="toBlue">蓝</a>
+			</li>
+			<li class="width text148">
+				<p class="text">请选择宽(px)：</p>
+				<a href="#" id="setW200">200</a>
+				<a href="#" id="setW300">300</a>
+				<a href="#" id="setW400">400</a>
+			</li>
+			<li class="height text148">
+				<p class="text">请选择高(px)：</p>
+				<a href="#" id="setH200">200</a>
+				<a href="#" id="setH300">300</a>
+				<a href="#" id="setH400">400</a>
+			</li>
+		</ul>
+		<div class="btn">
+			<form>
+				<input type="button" value="恢复" id="recover"/>
+				<input type="button" value="确定" id="confirm"/>
+			</form>
+		</div>
+	</div>
+</section>
+</body>
+</html>

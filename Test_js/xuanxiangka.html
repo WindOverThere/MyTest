@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+li{list-style: none;}
+.list{width:80px; height:30px;border:1px solid #333; position: relative;}
+.list a{display: block; line-height: 30px; text-align: center;text-decoration:none; color: #000;background: #f1f1f1;}
+#ul01{padding:0; margin:0; width:140px; border:1px solid #333; position: absolute; top:30px; left:-1px; background: yellow; display: none;}
+#ul01 li{text-align: center; line-height: 30px;}
+</style>
+</head>
+<body>
+ <ul>
+ 	<li id="list" class="list">
+ 		<a href="#" id="link">微博</a>
+ 		<ul id="ul01">
+ 			<li>私信</li>
+ 			<li>评论</li>
+ 			<li>@我</li>
+ 		</ul>
+ 	</li>
+ </ul>
+ <script>
+ 	document.getElementById('list').onmouseover = function(){
+ 		document.getElementById('ul01').style.display="block";
+ 	};
+ 	document.getElementById('list').onmouseout = function(){
+ 		document.getElementById('ul01').style.display="none";
+ 	}
+ </script>
+</body>
+</html>
