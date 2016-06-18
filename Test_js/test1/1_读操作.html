@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+	window.onload = function (){
+		var oBtn = document.getElementById('btn1');
+		var oText = document.getElementById('text1');
+		var oSele = document.getElementById('sele');
+		oBtn.onclick = function (){
+		alert(oSele.value);
+		};
+	};
+</script>
+</head>
+<body>
+<input id="text1" type="text" value="" />
+<select id="sele">
+	<option value="北京">北京</option>
+	<option value="上海">上海</option>
+	<option value="杭州">杭州</option>
+</select>
+<input id="btn1" type="button" value="按钮" />
+
+</body>
+</html>

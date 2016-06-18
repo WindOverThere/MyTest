@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+	window.onload = function (){
+		var oBtn = document.getElementById('btn1');
+		var oText = document.getElementById('text1');
+		var oImg = document.getElementById('img');
+		oBtn.onclick = function (){
+			//oBtn.value = "button";
+			//oText.value = "按钮";
+			oImg.src = oText.value;
+		};
+	};
+</script>
+</head>
+<body>
+<input id="text1" type="text" />
+<input id="btn1" type="button" value="按钮" />
+<br />
+<img id="img" src="i/1.jpg" width="300px" />
+
+</body>
+</html>

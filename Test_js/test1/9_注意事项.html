@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+window.onload = function (){
+	var oBtn1 = document.getElementById('btn1');
+	var oBtn2 = document.getElementById('btn2');
+	var oBtn3 = document.getElementById('btn3');
+	var oBtn4 = document.getElementById('btn4');
+	var oP = document.getElementById('p1');
+	var num = 15;
+
+	oBtn1.onclick = function (){
+		num --;
+		oP.style.fontSize = num + "px";4
+	}
+	oBtn2.onclick = function (){
+		num ++;
+		oP.style.fontSize = num + "px";
+	}
+	oBtn3.onclick = function (){
+		oP.className = "redBlue";
+	}
+	oBtn4.onclick = function (){
+		oP.className = "blueRed";
+	}
+}
+</script>
+<style type="text/css">
+	.redBlue{width:300px; background: blue; color:red; padding:10px; }
+	.blueRed{width:300px; background: red; color:blue; padding:10px; }
+</style>
+</head>
+<body>
+<input id="btn1" type="button" value="-" />
+<input id="btn2" type="button" value="+" />
+<input id="btn3" type="button" value="红色" />
+<input id="btn4" type="button" value="蓝色" />
+<p id="p1">
+	空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录空间打开链接徕卡记录
+</p>
+<input />
+</body>
+</html>
