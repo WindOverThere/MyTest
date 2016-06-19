@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+.aA{color:red;}
+.bB{color:blue;}
+</style>
+<script type="text/javascript">
+window.onload = function (){
+	var oAABtn = document.getElementById('aaBtn');//切换AA的按钮
+	var oBBBtn = document.getElementById('bbBtn');//切换BB的按钮
+	var oImg = document.getElementById('img');//表情图片
+
+	var onOff = true;//真的话切换成 AA酷1 否则切换成 BB大兵
+
+	oAABtn.onclick = function (){//AA
+		oImg.src = "face1.gif";
+		onOff = true;
+	};
+	oBBBtn.onclick = function (){//BB
+		oImg.src = "face2.gif";
+		onOff = false;
+	};
+	var oTalk = document.getElementById('talk'); //对话框
+	var oTxt = document.getElementById('txt');   //正输入的聊天内容
+	var oSend = document.getElementById('send'); //发送按钮
+
+	oSend.onclick = function (){
+		//alert(onOff);
+		var oClassName = "aA";
+		var oTalkName = "AA说";
+
+		if(onOff){	//AA
+			oClassName = "aA";
+			oTalkName = "AA说";
+		}else{	//BB
+			oClassName = "bB";
+			oTalkName = "BB说";
+		}
+		oTalk.innerHTML += '<li class="' + oClassName + '"><img src="' + oImg.src + '" /><p>' + oTalkName + '：'+ oTxt.value +'</p></li>';
+	}
+	
+}
+</script>
+</head>
+<body>
+	<input id="aaBtn" type="button" value="AA" /><input id="bbBtn" type="button" value="BB" /><br />
+	<img id="img" src="face1.gif" /><br />
+	<input id="txt" type="text" /><input id="send" type="button" value="发送" />
+	<ul id="talk">
+<!-- 	<li class="aA">
+			<img src="face1.gif" />
+			<p>AA说：哈哈哈哈哈哈哈</p>
+		</li>
+		<li class="bB">
+			<img src="face2.gif" />
+			<p>BB说：哈哈哈哈哈哈哈</p>
+		</li>
+		<li class="bB">
+			<img src="face2.gif" />
+			<p>BB说：哈哈哈哈哈哈哈</p>
+		</li>
+		<li class="bB">
+			<img src="face2.gif" />
+			<p>BB说：哈哈哈哈哈哈哈</p>
+		</li>
+		<li class="aA">
+			<img src="face1.gif" />
+			<p>AA说：哈哈哈哈哈哈哈</p>
+		</li> -->
+	</ul>
+</body>
+</html>

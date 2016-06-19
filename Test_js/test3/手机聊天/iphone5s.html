@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+body,ul,p,input{margin:0; padding:0;}
+input{border:none; outline: none;}
+li{list-style: none; }
+img{vertical-align: top; border:none;}
+body{background: url(img/iPhone5sPic.gif) no-repeat; position:relative; font:12px "微软雅黑";}
+clearFix:after{content:""; display: block; clear:both;}
+#wrap{width:236px; height:420px;background: #fff; position:absolute;; left:35px; top:98px;border:4px solid #000;}
+.messageUlWrap{height:360px; overflow:auto; padding-top:10px;}
+#messageUl{padding-top:10px;overflow:auto;}
+#messageUl li{margin-bottom: 6px; }
+.daBing{float:left; width:200px;}
+.cool{float:right; width:200px;}
+#messageUl .daBing p{float:left; background: #ded6e7; color:#212110;}
+#messageUl .daBing img{float:left;}
+#messageUl .cool p{float:right; background: #21c618; color:#fff;}
+#messageUl .cool img{float:right;}
+#messageUl img{padding:5px 3px; width:24px; height:24px;}
+#messageUl p{line-height:19px; padding:5px 4px; max-width: 160px;}
+#inputWrap{height: 36px; border-top:1px solid #bdcec6; background: #f7f7f7; padding:6px 0;}
+#face{padding:5px 3px; width:24px; height:24px; border:1px solid #ded6e7; border-radius: 5px; float:left; margin:0 3px; }
+#text{width: 134px; height:34px; float:left; border:1px solid #ded6e7; padding-left: 5px; border-radius:5px;}
+#sendBtn{font-size:22px; color:#8c8494; background: #f7f7f7; padding:0 5px; margin-top:3px;}
+
+</style>
+<script type="text/javascript">
+window.onload = function (){
+	var oImg = document.getElementById('face');//表情选择
+
+	var onOff = true;//开关
+
+	//切换表情 ---- 原先默认图片是face1，点击时候切换成face2,注意下面的图片顺序；
+	oImg.onclick = function (){ //if(这里不能直接写 true)
+		if(onOff){
+			oImg.src = "img/face2.gif";		//若为 真 的时候对应的是 大兵 表情
+			onOff = false;
+		}else{
+			oImg.src = "img/face1.gif";		//若为 假 的时候对应的是 酷 表情
+			onOff = true;
+		};
+		//alert(onOff);
+	};
+	var oUl = document.getElementById('messageUl');   	//聊天列表
+	var oTxt = document.getElementById('text');		  	//输入框
+	var oSendBtn = document.getElementById('sendBtn');	//发送
+
+	oSendBtn.onclick = function (){
+		//alert(onOff);
+		if(onOff){		//真的 是大兵
+			oUl.innerHTML = '<li class="daBing"><img src="img/face1.gif" /><p class="coolText">说：' + oTxt.value + '</p></li>' + oUl.innerHTML;
+		}else{
+			oUl.innerHTML = '<li class="cool"><img src="img/face2.gif" /><p class="daBingText">说：' + oTxt.value + ' </p></li>' + oUl.innerHTML;
+		}
+	}
+
+};
+</script>
+</head>
+<body>
+<div id="wrap">
+	<div class="messageUlWrap">
+		<ul id="messageUl">
+	<!-- 	
+			<li class="daBing">
+				<img src="img/face2.gif" />
+				<p class="coolText">说：文本内容。</p>
+			</li> 
+			<li class="cool">
+				<img src="img/face1.gif" />
+				<p class="daBingText">说：文本内容。</p>
+			</li>
+	-->
+		</ul>
+	</div>
+	<div id="inputWrap">
+		<img id="face" src="img/face1.gif" />
+		<input id="text" type="text" />
+		<input id="sendBtn" type="button" value="发送"/>
+	</div>
+</div>
+
+</body>
+</html>

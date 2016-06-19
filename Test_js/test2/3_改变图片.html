@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	img{widht:300px; height:300px;}
+</style>
+<script type="text/javascript">
+window.onload = function (){
+	var oImg = document.getElementById('pic'),
+		oBtn = document.getElementById('btn1');
+		oP = document.getElementById('p2');
+
+	var onOff = true;
+
+	oBtn.onclick = function (){
+		if(onOff){
+			oImg.src = "1.jpg";
+			onOff = false;
+			oP.innerHTML = "美国队长";
+		}else{
+			oImg.src = "2.jpg";
+			onOff = true;
+			oP.innerHTML = "灭霸";
+		};
+	};
+};
+
+</script>
+</head>
+<body>
+	<div>
+		<img id="pic" src="1.jpg" />
+	</div>
+	<p id="p2">美国队长</p>
+	<input id="btn1" type="button" value="改变图片" />
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+img{width:1024px; height:499px;}
+</style>
+
+<script type="text/javascript">
+	window.onload = function (){
+		var oTurnUp = document.getElementById('turnUp');
+		var oImg = document.getElementById('img');
+		var oTurnDn = document.getElementById('turnDn');
+		var arr = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"]; //图片的地址 存入 数组
+
+		var n = 0;
+
+
+		//alert(n.length)
+		//alert(n[2])
+		//点击下一张
+		oTurnDn.onclick = function (){
+			//alert(n);
+			n = n + 1;
+			//alert(n); 判断现在的n
+			//alert(arr.length);
+			if(n>arr.length-1){
+				alert("已经是最后一张了。");
+				n = arr.length-1;	//z之后永远返回第 最后一张;
+			};
+			oImg.src = arr[n];
+		};
+
+		//点击上一张
+		oTurnUp.onclick = function (){
+			n--;
+			//alert(n--)   弹出的是-1；
+			if(n<0){//当一直n<0的时候一张停留在第一张弹框
+				alert("已经是第一张了。");
+				n = 0;
+			}
+			oImg.src = arr[n];
+		}
+	};
+</script>
+
+</head>
+<body>
+
+	<input id="turnUp" type="button" value="上一张" />
+	<img id="img" src="1.jpg" />
+	<input id="turnDn" type="button" value="下一张" />
+
+</body>
+</html>

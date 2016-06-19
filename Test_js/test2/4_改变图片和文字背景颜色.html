@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	img{widht:300px; height:300px;}
+</style>
+<script type="text/javascript">
+window.onload = function (){
+	var oImg = document.getElementById('pic'),
+		oBtn1 = document.getElementById('btn1');
+		oP = document.getElementById('p2');
+		
+
+	var onOff = true;
+
+	oBtn1.onclick = function (){
+		if(onOff){
+			oImg.src = "1.jpg";
+			onOff = false;
+			oP.innerHTML = "美国队长";
+		}else{
+			oImg.src = "2.jpg";
+			onOff = true;
+			oP.innerHTML = "灭霸";
+		};
+	};
+	var oBtn2 = document.getElementById('btn2');
+	var oP3 = document.getElementById('p3');
+
+	oBtn2.onclick = function (){
+		if(onOff){
+			//alert(onOff); 当为true 的时候显示红色；
+			oP3.style.background = "red";
+		}else{
+			oP3.style.background = "blue";
+		};
+	};
+
+};
+
+</script>
+</head>
+<body>
+	<div>
+		<img id="pic" src="1.jpg" />
+	</div>
+	<p id="p2">美国队长</p>
+	<input id="btn1" type="button" value="改变图片" />
+	<input id="btn2" type="button" value="发送" />
+	<p id="p3">文字文字文字文字文字文字</p>
+</body>
+</html>
