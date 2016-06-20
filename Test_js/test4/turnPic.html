@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+body,p{margin:0; padding:0;}
+img{border:none; vertical-align: top;}
+a{text-decoration:none;}
+.wrap{width:1034px; border-top:1px solid #000; margin:10px auto;}
+.btnWrap{text-align:center; padding-top: 5px;}
+#textTip{text-align:center; padding:10px 0;}
+.pic img{width:1024px; height:499px;}
+.pic{border:5px solid #c6c6c6; position: relative;}
+.pic .topMask{position: absolute; width: 100%; height: 30px; left:0; top:0; background: #000; opacity:.4;}
+.pic .bottomMask{position: absolute; width: 100%; height: 30px; left:0; bottom:0; background: #000; opacity:.4;}
+.page{position: absolute; width:100%;  height:30px; left:0; top:0; text-align: center; font-size: 16px; line-height: 30px; color: #fff;}
+.picName{position: absolute; width:100%;  height:30px; left:0; bottom:0; text-align: center; font-size: 12px; line-height: 30px; color: #fff;}
+.pic .pgup{position: absolute; left:10px; top:200px; width:50px; height: 50px; opacity:.5; background:#fff url(i/pgup.gif) no-repeat center ;}
+.pic .pgdn{position: absolute; right:10px; top:200px; width:50px; height: 50px; background: #fff url(i/pgdn.gif) no-repeat center ; opacity:.5;}
+.picName{position: absolute; width: 100%; height: 30px; left:0; bottom:0; font-size: 16px; line-height: 30px; opacity:.4;color: #fff;}
+</style>
+<script type="text/javascript">
+window.onload = function (){
+	var oLoopBtn = document.getElementById('loopBtn')	//循环 切换按钮
+	var oOrderBtn = document.getElementById('orderBtn') //顺序 切换按钮
+	var oTextTip = document.getElementById('textTip')   //切换方式提示文字
+	var onOff = true;//开关		如果 为真 就执行 循环切换按钮内的代码
+
+	//点击 循环 按钮
+	oLoopBtn.onclick = function (){
+		onOff = true;
+		oTextTip.innerHTML = "图片可从最后一张跳转到第一张循环切换";
+		
+
+	}
+	//点击 顺序 按钮
+	oOrderBtn.onclick = function (){
+		onOff = false;
+		oTextTip.innerHTML = "图片只能到最后一张或只能到第一张切换";
+		
+	}
+
+	var oPgup = document.getElementById('pgup');	//上 一张
+	var oPgdn = document.getElementById('pgdn');
+	var oImg = document.getElementById('img');	//下 一张
+	var aImg = ["i/1.jpg","i/2.jpg","i/3.jpg","i/4.jpg"]   //图片存入的数组
+	var oPage = document.getElementById('page');//这是 页数
+	var oPicName = document.getElementById('picName') // 这是图片的 名字
+
+	var n = 0;
+	var aPicName = ["复仇者联盟","复仇者联盟2","钢铁侠","美国队长"]
+	//oPage.innerHTML = "1/" + (aImg.length-1); 
+	oPage.innerHTML = "1/" + aImg.length; //这是 默认的 页数
+
+
+
+	//下面是循环切换	
+		//点击 下一张 事件
+		oPgdn.onclick = function (){
+			//alert(onOff);
+			if(onOff){
+				n++; //一直在+1
+				//alert(aImg[n]);
+				//做判断
+				//alert(aImg.length);
+				console.log( n );
+				if(n >= aImg.length){//如果n大于等于 最后一张图片的数列下标的时候,
+					n = 0 ;			//切换第一张
+				}
+				oImg.src = aImg[n];
+				
+			}else{
+				console.log( onOff );
+				n++; //一直在+1
+				//alert(aImg[n]);
+				//做判断
+				//alert(aImg.length);
+				console.log( n );
+				if(n >= aImg.length){ //如果n超过了最后一张的话，就弹框
+					alert("这是最后一张了");
+					n = aImg.length-1;
+				}
+				oImg.src = aImg[n];
+			}
+				oPage.innerHTML = (n+1)+"/"+aImg.length;
+				oPicName.innerHTML = aPicName[n];
+
+		};
+	//下面是顺序切换
+		//点击 上一张一张 事件
+		oPgup.onclick = function (){
+			if(onOff){
+				n--; //一直在-1
+				console.log( n );
+				if(n<0){	//n 小于0的时候 切换成 最后一张
+					n = aImg.length-1;
+				}
+				oImg.src = aImg[n];
+			}else{
+				n--; //一直在-1
+				console.log( n );
+				if(n<0){	//n 小于0的时候 切换成 最后一张
+					alert("这是已经是第一张了");
+					n = 0;
+				}
+				oImg.src = aImg[n];
+			}
+				oPage.innerHTML = (n+1)+"/"+aImg.length;
+				oPicName.innerHTML = aPicName[n];
+		};
+}
+</script>
+</head>
+<body>
+	<section class="wrap">
+		<div class="btnWrap">
+			<input id="loopBtn" type="button" value="循环切换" />
+			<input id="orderBtn" type="button" value="顺序切换" />
+		</div>
+		<p id="textTip">图片可从最后一张跳转到第一张循环切换</p>
+		<div class="pic">
+			<img id="img" src="i/1.jpg" />
+			<span class="topMask"></span>
+			<span class="bottomMask"></span>
+			<p id="page" class="page"></p>
+			<p id="picName" class="picName">复仇者联盟</p>
+			<a id="pgup" class="pgup" href="#"></a>
+			<a id="pgdn" class="pgdn" href="#"></a>
+		</div>
+	</section>
+</body>
+</html>
