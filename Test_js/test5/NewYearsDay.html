@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body,p,input{margin:0; padding:0;}
+	img{border:none; vertical-align: top;}
+	input{outline: none;}
+	body{background: #000; font:16px "微软雅黑";}
+	.clearFix:after{ content: ""; display: block; clear: both; }
+	.wrap{width:1500px; margin:30px auto;}
+	.btnWrap{width:100%; height:30px; padding:30px 20px;}
+	.btnWrap input{background: #ff8503; width:100px; height:30px; font-size:16px; font-family: "微软雅黑"; color:#fff; border:3px solid red; margin-left: 100px;}
+	.imgWrap div{float:left; margin-left: 50px;}
+	.left img{width: 700px;}
+	.right img{width: 600px;}
+	.imgWrap p{color: #fff; text-align: center; line-height: 30px;}
+</style>
+<script type="text/javascript">
+window.onload = function (){
+	var olImg = document.getElementById('lImg'); //左边 的图片Id
+	var olRmg = document.getElementById('rImg'); //右边 的图片Id
+	var olText = document.getElementById('lText');//左边的 第一组文字
+	var orText = document.getElementById('rText');//右边的 第二组文字
+	var olPage = document.getElementById('lPage');//左边的 页数
+	var orPage = document.getElementById('rPage');//左边的 页数
+
+	var alImg = ["i/l1.jpg","i/l2.jpg","i/l3.jpg","i/l4.jpg"]; //左边 的图片地址存入数组
+	var aRImg = ["i/r1.jpg","i/r2.jpg","i/r3.jpg"];		  //右边 的图片地址存入数组
+	var alText = ["1","2","3","4"];	//左边的 页数
+	var arText = ["1","2","3"];		//右边的 页数
+
+	var nL = 0;
+	var nR = 0;
+
+	var oUpGrounp = document.getElementById('upGrounp'); //上一组按钮
+	var oDnGrounp = document.getElementById('dnGrounp'); //下一组按钮
+
+	oDnGrounp.onclick = function (){
+		nL++;
+		nR++;
+		//alert(n++);
+		if(nL>alImg.length-1){ //只要n小于0 就返回最后一张
+			nL = 0;
+			
+		}
+		if(nR>aRImg.length-1){
+			nR = 0;
+		}
+		olImg.src = alImg[nL];
+		olText.innerHTML = '第一组第&nbsp;' + alText[nL] + '&nbsp;张';
+		olPage.innerHTML = ''+ alText[nL] +'&nbsp;/&nbsp;' + alText.length + '';	
+		olRmg.src = aRImg[nR];
+		orText.innerHTML = '第二组第&nbsp;' + arText[nR] + '&nbsp;张';
+		orPage.innerHTML = ''+ arText[nR] +'&nbsp;/&nbsp;' + arText.length + '';
+	};
+
+	oUpGrounp.onclick = function (){
+		nL--;
+		nR--;
+		//alert(n--);
+		if(nL<0){//只要n小于0 就返回最后一张
+			nL = alImg.length-1;
+			
+		}
+		if(nR<0){
+			nR = aRImg.length-1;
+		}
+		olImg.src = alImg[nL];
+		olText.innerHTML = '第一组第&nbsp;' + alText[nL] + '&nbsp;张';
+		olPage.innerHTML = ''+ alText[nL] +'&nbsp;/&nbsp;' + alText.length + '';	
+		olRmg.src = aRImg[nR];
+		orText.innerHTML = '第二组第&nbsp;' + arText[nR] + '&nbsp;张';
+		orPage.innerHTML = ''+ arText[nR] +'&nbsp;/&nbsp;' + arText.length + '';
+	};
+
+	olImg.onclick = function (){
+		// alert(alImg.length);
+		nL++;
+		if(nL>alImg.length-1){ //当 nL 超过最后一张后 转到第一张图片
+			nL = 0;
+		}
+		olImg.src = alImg[nL];
+		olText.innerHTML = '第一组第&nbsp;' + alText[nL] + '&nbsp;张';
+		olPage.innerHTML = ''+ alText[nL] +'&nbsp;/&nbsp;' + alText.length + '';
+	};
+	olRmg.onclick = function (){
+		// alert(alImg.length);
+		nR++;
+		if(nR>aRImg.length-1){ //当 nR 超过最后一张后 转到第一张图片
+			nR = 0;
+		}
+		olRmg.src = aRImg[nR];
+		orText.innerHTML = '第二组第&nbsp;' + arText[nR] + '&nbsp;张';
+		orPage.innerHTML = ''+ arText[nR] +'&nbsp;/&nbsp;' + arText.length + '';
+	};
+}	
+</script>
+</head>
+<body>
+	<section class="wrap">
+		<div class="btnWrap">
+			<input id="upGrounp" type="button" value="上一组" />
+			<input id="dnGrounp" type="button" value="下一组" />
+		</div>
+		<div class="imgWrap clearFix">
+			<div class="left">
+				<img id="lImg" class="lImg" src="i/l1.jpg" />
+				<p id="lText" class="lText">第一组第&nbsp;1&nbsp;张</p>
+				<p id="lPage" class="lPage">1&nbsp;/&nbsp;4</p>
+			</div>
+			<div class="right">
+				<img id="rImg" class="rImg" src="i/r1.jpg" />
+				<p id="rText" class="rText">第二组第&nbsp;1&nbsp;张</p>
+				<p id="rPage" class="rPage">1&nbsp;/&nbsp;3</p>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
