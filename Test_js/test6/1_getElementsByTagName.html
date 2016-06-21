@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+window.onload = function (){
+	var aLi = document.getElementsByTagName('li');
+	aLi[0].onmouseover = function (){
+		aLi[0].style.background = 'red';
+	};
+	aLi[0].onmouseout = function (){
+		aLi[0].style.background = '#fff';
+	};
+}
+</script>
+</head>
+<body>
+<ul id="ul01">
+	<li>5454564</li>
+	<li>5454564</li>
+	<li>5454564</li>
+	<li>5454564</li>
+	<li>5454564</li>
+</ul>
+</body>
+</html>

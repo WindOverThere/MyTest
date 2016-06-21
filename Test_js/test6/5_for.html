@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	#oDiv div{width:100px; height:100px; background: red; float:left; margin:10px;}
+</style>
+<script type="text/javascript">
+window.onload = function (){
+	var oBtn = document.getElementById('btn');
+	var oDiv = document.getElementById('oDiv');
+
+	for(var i=0; i<10; i++){
+		oDiv.innerHTML += "<div></div>";
+	}
+}
+</script>
+</head>
+<body>
+
+<input id="btn" type="button" value="自动生成10个div" />
+<div id="oDiv">
+
+</div>
+
+</body>
+</html>

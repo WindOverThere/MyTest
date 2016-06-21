@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	#oDiv div{width:50px; height:50px; background: red; float:left; margin:10px;}
+</style>
+<script type="text/javascript">
+window.onload = function (){
+	var oBtn = document.getElementById('btn');
+	var oDiv = document.getElementById('oDiv');
+	var str = "";
+	var onOff = true;
+	
+
+	oBtn.onclick = function (){
+		if(onOff){
+			for(var i=0; i<10; i++){
+				// alert(i);
+				if(i % 2 == 0){
+					str += '<div style="background:red;"></div>';
+				}else{
+					str += '<div style="background:blue;"></div>';
+				}
+			}
+			oDiv.innerHTML = str;
+			onOff = false;
+		}
+	}
+}
+</script>
+</head>
+<body>
+
+<input id="btn" type="button" value="自动生成10个div" />
+<div id="oDiv">
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	.clearFix:after{content:""; display: block; clear: both;}
+	#oDiv{position: relative; width:1000px; height:1000px; margin: 20px auto; background: #f1f1f1;}
+	#oDiv div{width:100px; height:100px; background: #ccc; float:left;}
+</style>
+<script type="text/javascript">
+window.onload = function (){
+	var oDiv = document.getElementById('oDiv');
+	var str = "";
+
+	for(var i=0; i<100; i++){
+		var l = 0;
+		var t = 0;
+
+		l = (i % 10) * 100;
+		t = Math.floor(i / 10) * 100;
+		str += '<div style="background:url(i/ironMan.jpg) #ccc '+ -l +'px '+ -t +'px no-repeat; position:absolute; left:'+ l +'px; top:'+ t +'px; opacity:0;"></div>';
+	}
+	oDiv.innerHTML = str;
+	// alert(123);
+	var aDiv = oDiv.getElementsByTagName('div');
+	for(var i=0; i<aDiv.length; i++){
+		aDiv[i].onmouseover = function (){
+			this.style.opacity = 1;
+		}
+	}
+	
+
+}
+</script>
+</head>
+<body>
+<div id="oDiv" class="clearFix">
+
+</div>
+</body>
+</html>

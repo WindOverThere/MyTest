@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	#oDiv{position: relative;}
+	#oDiv div{width:50px; height:50px; background: red; float:left; margin:10px; position: absolute; left:0; top:0; font-size: 20px; line-height: 50px; color:#fff; text-align: center;}
+</style>
+<script type="text/javascript">
+window.onload = function (){
+	var oBtn = document.getElementById('btn');
+	var oDiv = document.getElementById('oDiv');
+	var str = "";
+	var aColor = ["red","blue","green","yellow"]
+
+	oBtn.onclick = function (){
+		for(var i=0; i<5; i++){
+			
+			var l = 0;
+			var t = 0;
+
+			l = (i % 5) * 55;
+			if(i <= 2){
+				t = i*55;
+			}else{
+				t = (4-i)*55;
+			}
+			str += '<div style="left:'+ l +'px;top:'+ t +'px;">' + (i+1) + '</div>';
+
+		}
+		oDiv.innerHTML = str;
+	}
+}
+</script>
+</head>
+<body>
+
+<input id="btn" type="button" value="自动生成一个V字形" />
+<div id="oDiv">
+
+</div>
+
+</body>
+</html>

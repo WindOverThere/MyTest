@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+window.onload = function (){
+	var oUl01 = document.getElementsByTagName('ul');
+	var aLi01 = oUl01[0].getElementsByTagName('li');
+	var aLi02 = oUl01[1].getElementsByTagName('li');
+	aLi01[0].onmouseover = function (){
+		aLi01[0].style.background = 'red';
+	};
+	aLi01[0].onmouseout = function (){
+		aLi01[0].style.background = '#fff';
+	};
+	aLi02[0].onmouseover = function (){
+		aLi02[0].style.background = 'blue';
+	};
+	aLi02[0].onmouseout = function (){
+		aLi02[0].style.background = '#fff';
+	};
+}
+</script>
+</head>
+<body>
+<ul id="ul01">
+	<li>5454564</li>
+	<li>5454564</li>
+	<li>5454564</li>
+	<li>5454564</li>
+	<li>5454564</li>
+</ul>
+<ul id="ul02">
+	<li>54vddvdv</li>
+</ul>
+</body>
+</html>

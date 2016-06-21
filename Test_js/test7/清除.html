@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	.active{background: red;}
+</style>
+</head>
+<body>
+	<input type="button" value="按钮1" />
+	<input type="button" value="按钮2" />
+	<input type="button" value="按钮3" />
+	<input type="button" value="按钮4" />
+	<script type="text/javascript">
+		var aInput = document.getElementsByTagName('input');
+
+		for(var i=0; i<aInput.length; i++){
+			//点击当前按钮
+			aInput[i].onclick = function (){
+				//先清除所有background;
+				for(var i=0; i<aInput.length; i++){
+					aInput[i].className = "";
+				}
+				//当前添加背景
+				this.className = "active";
+			}
+		}
+	</script>
+</body>
+</html>

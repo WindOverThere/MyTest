@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	.active{background: red;}
+</style>
+</head>
+<body>
+	<input id="btn" type="button" value="点击" />
+	<script type="text/javascript">
+		var oBtn = document.getElementById('btn');
+		var m = 0;
+		
+		oBtn.onclick = function (){
+			if(m % 4  == 0){
+				console.log(11111111111);
+			}else if(m % 4  == 1){
+				console.log(2222222222);
+			}else if(m % 4  == 2){
+				console.log(33333333333);
+			}else if(m % 4  == 3){
+				console.log(4444444444);
+			}
+			
+			m++;
+		}
+	</script>
+</body>
+</html>
