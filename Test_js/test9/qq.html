@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body,h2,ul{margin: 0; padding:0;}
+	body{font-size: 14px; font-family: "微软雅黑";}
+	li{list-style: none; line-height: 24px;}
+	.wrap{width:250px; border:2px solid #000; margin: 0 auto; background: #dcdbdb;}
+	h2{text-indent: 10px;background: #dcdbdb;}
+	.wrap ul{display: none;text-indent: 10px;background: #e8e9eb;}
+	.wrap .show{display: block;}
+	.h2Bg{background: #e8e9eb;}
+	.list{padding: 2px;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var aH2 = document.getElementsByTagName('h2');
+		var oUl = document.getElementById('oul');
+		var aShow = oUl.getElementsByTagName('ul');
+		var aLi = null;
+		var arrLi = [];
+		var n = 0;
+		//点击h2展开和收缩
+		for(var i=0; i<aH2.length; i++){
+			aH2[i].index = i;
+			aH2[i].onclick = function (){
+				if(this.className == ""){
+					this.className = "h2Bg";
+					aShow[this.index].className = "show";			
+				}else{
+					this.className = "";
+					aShow[this.index].className = "";
+				}
+			}
+		}
+		//找到qq好友的列表li
+		for(var i = 0;i<aShow.length;i++){
+			aLi = aShow[i].getElementsByTagName('li');
+			// console.log(aLi[1]);
+			for(var j = 0;j<aLi.length;j++){
+				arrLi.push(aLi[j]);
+			}
+		}
+		for(var i = 0;i<arrLi.length;i++){
+			arrLi[i].onOff = true;
+			arrLi[i].onmouseover = function (){//鼠标 移入 一好友头像
+				if(this.onOff){
+					this.style.background = "#fff";
+				}else{
+					this.style.background = "red";
+				}
+			}
+			arrLi[i].onmouseout = function (){//鼠标 移出
+				if(this.onOff){
+					this.style.background = "";
+				}else{
+					this.style.background = "red";
+				}
+			}
+			arrLi[i].onclick = function (){//鼠标 点击
+				for(var i = 0;i<arrLi.length;i++){
+					arrLi[i].style.background = "";
+					arrLi[i].onOff = true;//全部变为 真;
+				}
+				this.onOff = false;
+				this.style.background = "red";
+			}
+		}
+	}
+/*
+1、鼠标移入好友，背景颜色变白色，鼠标移开，背景颜色恢复默认灰色。
+2、鼠标（先移入）点击 好友后，颜色变成红色，鼠标移开颜色保持点击后的红色不变
+3、点击好友后，移入其他好友，执行第1条的效果，再移入点击后的红色好友，保持红色不变
+4、再点击之前点击过的红色好友，所有效果恢复到第1条执行之前的默认。
+*/
+</script>
+</head>
+<body>
+	<ul id="oul" class="wrap">
+		<li class="list">
+			<h2>我的设备</h2>
+			<ul>
+				<li>电脑</li>
+				<li>手机</li>
+			</ul>
+		</li>
+		<li class="list">
+			<h2>我的好友</h2>
+			<ul>
+				<li>不可锋吹</li>
+				<li>浮生若梦</li>
+				<li>妙味实体班售前</li>
+				<li>莫涛老师</li>
+				<li>童斌老师</li>
+			</ul>
+		</li>
+		<li class="list">
+			<h2>我的同学</h2>
+			<ul>
+				<li>不可锋吹</li>
+				<li>浮生若梦</li>
+				<li>妙味实体班售前</li>
+				<li>莫涛老师</li>
+				<li>童斌老师</li>
+				<li>莫涛老师</li>
+				<li>童斌老师</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>

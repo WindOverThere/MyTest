@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	p{margin:0; padding:0;}
+	.wrap{height: 65px; width: 320px; position: relative;}
+	.wrap a{width:50px; height:50px; border:2px solid #999; background: #e7e8ea; float:left; margin:2px;}
+	.wrap .evaluate{position: absolute; right:-80px; top:5px; height: 50px; width: 50px; color: #ef7300; line-height: 50px; display: none;}
+	.tip{width: 234px; height:38px; border:1px solid #dedeb5; background: url(image/tip.jpg); position: absolute; right:-240px; top:12px;}
+	.wrap .gray{background: #333;}
+	.wrap .yellow{background: #f7b500;}
+	.wrap .red{background: red;}
+	.show{display: block;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var aA = document.getElementsByTagName('a');
+		var oP = document.getElementById('tip');
+		var aSpan = document.getElementsByTagName('span');
+		var n = 1;
+		var onOff = true;	//设置开关
+
+		for(var i = 0; i<aA.length; i++){
+			aA[i].index = i;
+			//鼠标 移入事件
+			aA[i].onmouseover = function (){
+				for(var i = 0;i<aA.length; i++){
+					// console.log(this.index);
+					if(i<=this.index){//左边--如果 i小于当前的索引，加颜色
+						if(this.index<=1){//如果当前的 i小于等于1，加灰色
+							aA[i].className = "gray";
+						}else{//否则加黄色
+							for(var i = 0; i<this.index+1; i++){
+								aA[i].className = "yellow";
+							}
+						}
+						oP.style.display = "none";	//鼠标移入后提示框消失
+						aSpan[this.index].style.display = "block"; //当前的评分文字出现
+					}else{
+						aA[i].className = "";//右边--无颜色
+					}
+				}
+			}
+			//鼠标 移出事件 
+			aA[i].onmouseout = function (){
+				if(onOff){//如果为真 ，清空所有颜色，提示框出现
+					for(var i = 0;i<aA.length; i++){
+						aA[i].className = "";
+						oP.style.display = "block";
+						aSpan[this.index].style.display = "none";
+					}				
+				}else{//如果为假 ， 执行 鼠标移入 的代码
+					for(var i = 0;i<aA.length; i++){
+						// console.log(this.index);
+						aSpan[this.index].style.display = "none";
+						if(i<=n){
+							if(n<=1){
+								aA[i].className = "gray";
+							}else{
+								aA[i].className = "yellow";
+							}
+						}else{
+							aA[i].className = "";
+						}
+					}
+				}
+			}
+/*
+1、鼠标 移入 a的前2个，前2个变成灰色，如果大于2个都变成黄色，包括前2个，鼠标移开全部颜色清空，恢复默认颜色。
+2、鼠标（移入后） 点击 下去，如果是前2个，颜色变成灰色，如果大于2个,全部 a 都变成黄色，鼠标 移开 颜色保持点击后的颜色。
+3、鼠标在点击后，再移入鼠标，执行 第1条内容的鼠标移入效果，但是鼠标移开颜色还保持点击后的效果
+*/
+			//鼠标 点击事件
+			aA[i].onclick = function (){
+				onOff = false;	//一点击就为 假 
+				n = this.index;	//记录当前的点击索引
+				for(var i = 0;i<aA.length; i++){
+					if(i<=this.index){				
+						if(i<=1){
+							aA[i].className = "gray";
+						}else{
+							for(var i = 0; i<this.index+1; i++){
+								aA[i].className = "yellow";
+							}
+						}
+						oP.style.display = "none";
+						for(var j = 0;j<aA.length;j++){
+							aSpan[j].style.display = "none";
+						}
+						aSpan[this.index].style.display = "block";
+					}else{
+						aA[i].className = "";
+					}
+				}
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<h2>总体评分：</h2>
+	<section class="wrap">
+		<a href="javascript:;"></a>
+		<a href="javascript:;"></a>
+		<a href="javascript:;"></a>
+		<a href="javascript:;"></a>
+		<a href="javascript:;"></a>
+		<span class="evaluate">较差</span>
+		<span class="evaluate">较差</span>
+		<span class="evaluate">还行</span>
+		<span class="evaluate">推荐</span>
+		<span class="evaluate">力荐</span>
+		<p id="tip" class="tip"></p>
+	</section>
+</body>
+</html>

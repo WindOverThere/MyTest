@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	input{width:100px; height:30px;}
+	div{width: 300px; height:300px; border:2px solid #000; margin:5px; font-size:50px; line-height: 300px; text-align: center;color:red; font-weight: bold; display: none;}
+	.active{background:yellow;}
+	.show{display: block;background:#f1f1f1;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var aInput = document.getElementsByTagName('input');
+		var aDiv = document.getElementsByTagName('div');
+
+		//给每一个按钮添加 点击 事件 用for循环
+		for(var i = 0; i<aInput.length; i++){
+			aInput[i].index = i; //添加索引值
+			//点击按钮
+			aInput[i].onclick = function (){
+				//清除所有class为空
+				for(var i = 0; i<aInput.length; i++){
+					aInput[i].className = ""; //清空 按钮样式
+					aDiv[i].className = "";	  //清空 div样式
+				}
+				this.className = "active";	//点击的当前input添加active样式
+				aDiv[this.index].className = "show"; 
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<input class="active" type="button" value="体育" />
+	<input type="button" value="娱乐" />
+	<input type="button" value="音乐" />
+	<div class="show">体育</div>
+	<div>娱乐</div>
+	<div>音乐</div>
+</body>
+</html>

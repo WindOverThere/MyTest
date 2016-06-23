@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>	
+	body{background: url(i/bodyBg.jpg);}
+	section{width:488px; margin:10px auto; position: relative;}
+	img{width:488px; display: none;}
+	div{float:left;width:50px; height:50px; background: #222; border-radius:10%; margin:35px;}
+	.active{background: #666;}
+	.show{display: block;}
+	a{width:244px; height:780px; background: #000;font-size:50px; line-height: 780px; color: #fff; text-align: center; text-decoration: none;font-family: "微软雅黑";}
+	.pgup{position: absolute; left:-244px; top:0;}
+	.pgdn{position: absolute; right:-244px; top:0;}
+	.hide{display: none;}
+	span{width:150px; height:150px; display: none; border:2px solid #fff;}
+	span:nth-of-type(1){ position: absolute; left:-20px; bottom:-35px; background:#000 url(i/1.jpg) no-repeat center center/contain;}
+	span:nth-of-type(2){ position: absolute; left:120px; bottom:-35px; background:#000 url(i/2.jpg) no-repeat center center/contain;}
+	span:nth-of-type(3){ position: absolute; left:220px; bottom:-35px; background:#000 url(i/3.jpg) no-repeat center center/contain;}
+	span:nth-of-type(4){ position: absolute; left:320px; bottom:-35px; background:#000 url(i/4.jpg) no-repeat center center/contain;}
+	span img{width: 150px; height:150px;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var aDiv = document.getElementsByTagName('div');
+		var aImg = document.getElementsByTagName('img');
+		var aA = document.getElementsByTagName('a');
+		var aSpan = document.getElementsByTagName('span');
+
+		//给每个div绑定onmouseover的事件用for循环
+		for( var i = 0; i<aDiv.length; i++){
+			aDiv[i].index = i; //添加索引
+			//div的onmouseover时间
+			aDiv[i].onclick = function (){
+				// alert(123);
+				//先清洗所有的样式
+				for(var i = 0; i<aDiv.length; i++){
+					aDiv[i].className = ""; // 清洗div样式
+					aImg[i].className = ""; //清洗img样式
+				}
+				this.className = "active"; //鼠标经过时给每一个添加active
+				aImg[this.index].className = "show";
+				n = this.index; //记录鼠标移入后 n 的值
+			}
+		};
+
+		for( var i = 0; i<aDiv.length; i++){
+			aDiv[i].index = i; //添加索引
+			//div的onmouseover时间
+			aDiv[i].onmouseover = function (){
+				// alert(123);
+				//先清洗所有的样式
+				for(var i = 0; i<aDiv.length; i++){
+					aDiv[i].className = ""; // 清洗div样式
+					aSpan[i].className = ""; //清洗img样式
+				}
+				this.className = "active";
+				aSpan[this.index].className = "show";
+				n = this.index; //记录鼠标移入后 n 的值
+			}
+			aDiv[i].onmouseout = function (){
+				this.className = "active";
+				aSpan[this.index].className = "hide";
+				n = this.index; //记录鼠标移入后 n 的值
+			}
+
+		}
+		var n = 0;
+		function imgDiv(){
+			aImg[n].className = "show";
+			aDiv[n].className = "active";
+		};
+		function clear(){
+			for(var i = 0; i<aImg.length; i++){
+				aImg[i].className = "hide"; //清除所有的show除 图片 show样式
+				aDiv[i].className = "";		//清除 div show样式
+			}			
+		};
+		//点击 上一张
+		aA[0].onclick = function (){
+			n--;
+			clear();
+			if(n<0){ //如果n<0 转到最后一张图片
+				n = aImg.length-1;
+			}
+			imgDiv();
+		};
+		//点击 下一张
+		aA[1].onclick = function (){
+			n++; //自增
+			//清除所有的show
+			clear();
+			if(n>aImg.length-1){ //如果n大于图片的长度跳转到第一张
+				n = 0;
+			}
+			imgDiv();
+		};
+	}
+</script>
+</head>
+<body>
+	<section>
+		<img class="show" src="i/1.jpg" />
+		<img src="i/2.jpg" />
+		<img src="i/3.jpg" />
+		<img src="i/4.jpg" />
+		<hr />
+		<div class="active"></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<a class="pgup" href="javascript:;">上一张</a>
+		<a class="pgdn" href="javascript:;">下一张</a>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</section>
+</body>
+</html>
