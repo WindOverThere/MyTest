@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	ul{width:400px; margin:50px auto;}
+	li{list-style: none; padding:5px; float:left; cursor: pointer; font-size: 40px;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var aLi = document.getElementsByTagName('li');
+		var onOff = true;
+		var n = 0;
+
+		for(var i = 0;i<aLi.length;i++){
+			aLi[i].index = i;//添加 索引
+			//鼠标 移入
+			aLi[i].onmouseover = function (){
+				for(var i = 0;i<aLi.length;i++){
+					if(i<=this.index){//左边
+						if(this.index<=1){//如果当前的星星的索引值小于等于1，显示为 灰色
+							aLi[i].style.color = "gray";
+						}else{//否则 显示为 红色
+							aLi[i].style.color = "red";
+						}
+					}else{//右边		默认颜色
+						aLi[i].style.color = "";
+					}
+				}
+			}
+			//鼠标 移出
+			aLi[i].onmouseout = function (){
+				if(onOff){//为true，鼠标没有点击，颜色为默认
+					//alert(n);
+					for(var i = 0;i<aLi.length;i++){
+						aLi[i].style.color = "";
+					}
+				}else{//若为false，说明鼠标点击了，点击后的颜色和当前鼠标移入的颜色一样，执行鼠标移入的代码
+					//alert(n);
+					for(var i = 0;i<aLi.length;i++){
+						if(i<=n){//左边
+							if(n<=1){//如果当前的星星的索引值小于等于1，显示为 灰色
+								aLi[i].style.color = "gray";
+							}else{//否则 显示为 红色
+								aLi[i].style.color = "red";
+							}
+						}else{//右边		默认颜色
+							aLi[i].style.color = "";
+						}
+					}
+				}
+			}
+			//鼠标 点击
+			aLi[i].onclick = function (){
+				onOff = false;	//点击后变为false
+				//alert(this.index);
+				n = this.index;
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<ul>
+		<li>&star;</li>
+		<li>&star;</li>
+		<li>&star;</li>
+		<li>&star;</li>
+		<li>&star;</li>
+	</ul>
+</body>
+</html>

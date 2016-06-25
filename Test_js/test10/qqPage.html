@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	section{width:500px; margin:50px auto;}
+	li{list-style: none;margin-left: -40px;}
+	ul{display: none;}
+	.show{display: block;}
+	.hide{display: none;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var aH2 = document.getElementsByTagName('h2');
+		var aUl = document.getElementsByTagName('ul');
+		var aLi = document.getElementsByTagName('li');
+		//点击事件
+		for(var i = 0;i<aH2.length;i++){
+			aH2[i].index = i; //添加索引值
+			aH2[i].onclick = function (){
+				if(aUl[this.index].className == "show"){ //双等号==
+					aUl[this.index].className = "hide";
+				}else{
+					aUl[this.index].className = "show";
+				}
+			}
+		}
+		for(var i = 0;i<aLi.length;i++){
+			aLi[i].index = i;
+			aLi[i].onOff = true;
+			//移入 好友
+			aLi[i].onmouseover = function (){
+				if(this.onOff){//如果没有被点击，鼠标移入变黄色 
+					this.style.background = "yellow";	
+				}		
+			}
+			//移出 好友
+			aLi[i].onmouseout = function (){
+				if(this.onOff){//如果没有被点击，是默认颜色
+					this.style.background = "";	
+				}		
+			}
+			//点击 好友
+			aLi[i].onclick = function (){
+				for(var i = 0;i<aLi.length;i++){
+					aLi[i].style.background = ""; //清除所有的li的背景
+				}
+				this.style.background = "red";
+				this.onOff = false; //点击之后设为false，颜色保持红色不变
+				// alert(this.onOff);
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<section>
+		<div>
+			<h2>我的好友</h2>
+			<ul class="show">
+				<li>哦哦看哦</li>
+				<li>块大家电</li>
+				<li>诶诶浏览</li>
+				<li>诶诶浏览</li>
+				<li>饿急哦</li>
+			</ul>
+		</div>
+		<div>
+			<h2>我的同学</h2>
+			<ul>
+				<li>哦哦看哦</li>
+				<li>块大家电</li>
+				<li>诶诶浏览</li>
+				<li>饿急哦</li>
+				<li>诶诶浏览</li>
+				<li>饿急哦</li>
+			</ul>
+		</div>
+		<div>
+			<h2>我的同事</h2>
+			<ul>
+				<li>哦哦看哦</li>
+				<li>块大家电</li>
+				<li>诶诶浏览</li>
+				<li>饿急哦</li>
+			</ul>
+		</div>
+	</section>
+</body>
+</html>
