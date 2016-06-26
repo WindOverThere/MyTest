@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+	window.onload = function (){
+		var oUl = document.getElementById('list');
+		var aLi = document.getElementsByTagName('li');
+
+		for(var i=0; i<aLi.length; i++){
+			fn1(aLi[i]);
+		}
+		function fn1(oLi){
+			var aBtn = oLi.getElementsByTagName('input');
+			var oStrong = oLi.getElementsByTagName('strong')[0];
+			var oEm = oLi.getElementsByTagName('em')[0];
+			var oSpan = oLi.getElementsByTagName('span')[0];
+			var n1 = Number(oStrong.innerHTML); //获取到的是字符串
+			var n2 = parseFloat(oEm.innerHTML); //还是字符串
+
+			aBtn[1].onclick = function (){
+				n1++;
+				oStrong.innerHTML = n1;
+				oSpan.innerHTML = n1*n2 + "元";
+			}
+
+			aBtn[0].onclick = function (){
+				n1--;
+				if(n1 < 0){
+					n1 = 0;
+				}
+				oStrong.innerHTML = n1;
+				oSpan.innerHTML = n1*n2 + "元";
+
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<ul id="list">
+	<li>
+		<input type="button" value="-" />
+		<strong>0</strong>
+		<input type="button" value="+" />
+		单价：<em>12.5元</em>
+		小计：<span>0元</span>
+	</li>
+	<li>
+		<input type="button" value="-" />
+		<strong>0</strong>
+		<input type="button" value="+" />
+		单价：<em>16元</em>
+		小计：<span>0元</span>
+	</li>
+	<li>
+		<input type="button" value="-" />
+		<strong>0</strong>
+		<input type="button" value="+" />
+		单价：<em>32.5元</em>
+		小计：<span>0元</span>
+	</li>
+</ul>
+</body>
+</html>

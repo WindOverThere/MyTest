@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	input{width:100px; height:50px; font-size:30px;}
+	div{width:500px; height:250px; background: #ccc; font-size: 30px; line-height: 250px; font-size: 50px; font-family: "微软雅黑"; text-align: center; margin:20px; display: none;}
+	.hide{display: none;}
+	.active{display: block;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var aInput = document.getElementsByTagName('input');
+		var aDiv = document.getElementsByTagName('div');
+
+		for(var i = 0; i<aInput.length; i++){
+			aInput[i].index = i;
+			aInput[i].onclick = function (){
+				for(var i = 0; i<aInput.length; i++){
+					aInput[i].style.background = "";
+					aDiv[i].className = "hide";
+				}
+				this.style.background = "red";
+				aDiv[this.index].className = "active";
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="1111" />
+	<input type="button" value="2222" />
+	<input type="button" value="3333" />
+	<input type="button" value="4444" />
+	<hr />
+	<div class="active">一一一</div>
+	<div>二二二</div>
+	<div>三三三</div>
+	<div>四四四</div>
+</body>
+</html>

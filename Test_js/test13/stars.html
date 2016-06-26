@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body{width: 500px; margin:20px auto;}
+	a{text-decoration: none; font-size: 80px;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var aA = document.getElementsByTagName('a');
+		var n = 0;
+		var onOff = true;
+		for(var i = 0; i<aA.length; i++){
+			aA[i].index = i;
+			aA[i].onmouseover = function (){
+				for(var i = 0; i<aA.length; i++){
+					if( this.index <= i ){//右边
+						if(this.index < 3){
+							aA[i].style.color = "red";
+						}else{
+							aA[i].style.color = "gray";
+						}
+					}else{//左边
+						aA[i].style.color = "";
+					}
+				}
+			};
+			aA[i].onmouseout = function (){
+				for(var i = 0; i<aA.length; i++){
+					if(onOff){
+						for(var i = 0; i<aA.length; i++){
+							aA[i].style.color = "";
+						}
+					}else{
+						if( n <= i ){
+							if(n < 3){
+								aA[i].style.color = "red";
+							}else{
+								aA[i].style.color = "gray";
+							}
+						}else{
+							aA[i].style.color = "";
+						}						
+					}
+				}
+			}
+			aA[i].onclick = function (){
+				onOff = false;
+				n = this.index;
+				//alert(n);
+			}
+		}
+	}
+/*
+	1.如果鼠标放在某一个星星的上面，所有的右边都变色 , 右边里面1.不超过倒数第二个，变灰色 2.超过第二个变红色
+*/
+</script>
+</head>
+<body>
+	<a href="javascript:;">&star;</a>
+	<a href="javascript:;">&star;</a>
+	<a href="javascript:;">&star;</a>
+	<a href="javascript:;">&star;</a>
+	<a href="javascript:;">&star;</a>
+</body>
+</html>
