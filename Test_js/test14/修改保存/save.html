@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body{font: 20px/20px "微软雅黑";}
+	.wrap{margin:50px auto; width: 500px;height: 200px; background: #ccc; padding:10px;}
+	li{list-style: none; float: left; width:300px;}
+	.acquiesce{display: block; height: 40px;}
+	p{float: left; width: 150px; margin: 0; line-height: 30px;}
+	a{float: left; width:30px; height:30px; background: url(image/pen.gif) no-repeat center center; display: block;}
+	.hide{display: none;}
+	.show{display: block;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var oUl = document.getElementById('wrapId');
+		var aLi = oUl.getElementsByTagName('li');//所有的li
+		var t = "妙味远程课堂";
+
+		for (var i = 0; i < aLi.length; i++) {
+			fn(aLi[i]);
+		};
+
+		function fn(l){
+			var oA = l.getElementsByTagName('a')[0];
+			var oDiv = l.getElementsByTagName('div');
+			var oIpt = l.getElementsByTagName('input');
+			var oP = l.getElementsByTagName('p')[0];
+
+			oA.onclick = function (){//点击 铅笔
+				oIpt[0].value = t;
+				oDiv[0].className = "hide";
+				oDiv[1].className = "show";
+			}
+			oIpt[1].onclick = function (){//点击 保存
+				oP.innerHTML = oIpt[0].value;
+				showHide();
+				t = oIpt[0].value;	//记录之前的输入内容
+			}
+			oIpt[2].onclick = function (){//点击 取消
+				oP.innerHTML = t;
+				showHide();
+			}
+			function showHide(){
+				oDiv[0].className = "show";
+				oDiv[1].className = "hide";				
+			};
+		}
+
+	}
+</script>
+</head>
+<body>
+	<ul class="wrap" id="wrapId">
+		<li>
+			<div class="acquiesce">
+				<p>妙味远程课堂</p>
+				<a href="javascript:;"></a>				
+			</div>
+			<div class="hide">
+				<input type="text" value="妙味远程课堂" />
+				<input type="button" value="保存" />	
+				<input type="button" value="取消" />	
+			</div>
+		</li>
+		<li>
+			<div class="acquiesce">
+				<p>妙味远程课堂</p>
+				<a href="javascript:;"></a>				
+			</div>
+			<div class="hide">
+				<input type="text" value="妙味远程课堂" />
+				<input type="button" value="保存" />	
+				<input type="button" value="取消" />	
+			</div>
+		</li>
+	</ul>
+</body>
+</html>

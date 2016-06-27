@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id);
+	}
+
+	window.onload = function (){
+		var oText = $('oText');
+		var oBtn = $('oBtn');
+
+		oBtn.onclick = function (){
+			if(oText.value == ""){
+				alert("请输入内容");
+				return;
+			}
+			alert("已经提交");
+		}
+	}
+
+</script>
+</head>
+<body>
+	<input type="text" id="oText" />
+	<input type="button" id="oBtn"  value="提交" />
+
+</body>
+</html>
