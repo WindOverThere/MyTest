@@ -1,0 +1,49 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+          div { color:blue; }
+          span { color:red; }
+          b { font-weight:bolder; }
+
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+
+    <div>Zero-th <span></span></div>
+    <div>First <span></span></div>
+    <div>Second <span></span></div>
+     
+    <script>
+
+        $("div").attr("id", function (cv) {
+            return "div-id" + cv;
+        })
+        .each(function () {
+            console.log($("span", this));
+            $("span", this).html("(ID = '<b>" + this.id + "</b>')");
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

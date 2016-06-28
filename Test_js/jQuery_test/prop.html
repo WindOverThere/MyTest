@@ -1,0 +1,46 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+        p { margin: 20px 0 0 }
+        b { color: blue; }
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+
+    <input id="check1" type="checkbox" checked="checked">
+    <label for="check1">Check me</label>
+    <p></p>
+
+    <script>
+        $("input").change(function() {
+            var $input = $(this);
+            $("p").html(".attr('checked'): <b>" + $input.attr('checked') + "</b><br>"
+                + ".prop('checked'): <b>" + $input.prop('checked') + "</b><br>"
+                + ".is(':checked'): <b>" + $input.is(':checked') ) + "</b>";
+        }).change();
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

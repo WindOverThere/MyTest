@@ -1,0 +1,33 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+    <script>
+    	$(document).ready(function (){
+ 			$("div").children("p.ppp").css({
+ 				"color":"red",
+ 				"border":"1px solid red"
+ 			})
+    	});
+    </script>
+</head>
+<body>
+	<div class="ancestors">
+	  <div style="width:500px;">div (great-grandparent)
+	    <ul>ul (grandparent)
+	      <li>li (direct parent)
+	        <span>span</span>
+	      </li>
+	    </ul>   
+	  </div>
+
+	  <div style="width:500px;">div (grandparent)   
+	    <p class="ppp">p (direct parent)
+	        <span>span</span>
+	     </p> 
+	  </div>
+	</div>	
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+        div {background:yellow;
+            border:1px solid #AAA;
+            width:80px;
+            height:80px;
+            margin:0 5px;
+            float:left;
+        }
+        div.colored { background:green; }
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+    <button id="run">Run</button>
+
+    <div></div>
+    <div id="mover"></div>
+    <div></div>
+    <script>
+     
+        $("#run").click(function(){
+            $("div:animated").toggleClass("colored");
+        });
+        function animateIt() {
+            $("#mover").slideToggle("slow", animateIt);
+        }
+        animateIt();
+    </script>
+</body>
+</html>

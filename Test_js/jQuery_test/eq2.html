@@ -1,0 +1,67 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+        div{
+            width: 100%;
+            height: 50px;
+            border:1px solid #000;
+        }
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+    <ul class="nav">
+        <li>List 1, item 1</li>
+        <li>List 1, item 2</li>
+        <li>List 1, item 3</li>
+    </ul>
+    <ul class="nav">
+        <li>List 2, item 1</li>
+        <li>List 2, item 2</li>
+        <li>List 2, item 3</li>
+    </ul>
+    <ul>
+        <li>List 2, item 1</li>
+        <li>List 2, item 2</li>
+        <li>List 2, item 3</li>
+    </ul>
+
+    <script>
+        //$("ul.nav li:eq(4)").css("backgroundColor","#ff0")
+
+        /*$("ul.nav").each(function (index){
+            $(this).find("li:eq(2)").css("fontSize",20);
+        })*/
+
+        //$("ul.nav li:nth-child(2)").css("color","red");
+
+        //$("li:even").css("color","red");//偶数
+        //$("li:odd").css("color","red");//奇数
+
+        //$("li:gt(1)").css("color","red");
+
+        $("ul:not(.nav)").css("color","red");
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

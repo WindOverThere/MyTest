@@ -1,0 +1,37 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+	<style>
+	  b { color:red; font-size:16px; display:block; clear:left; }
+	  div,span,p { width: 40px; height: 40px; float:left;
+	               margin: 10px; background-color: blue;
+	               padding:3px; color:white;
+	             }
+	</style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+	  <span>span</span>
+	 
+	  <p>p</p>
+	  <p>p</p>
+	  <div>div</div>
+	  <span>span</span>
+	 
+	  <p>p</p>
+	  <div>div</div>
+	  <b></b>
+	<script>
+
+	    var list = $("div,p,span").map(function () {
+	    	console.log(this);
+	    	return this.tagName;
+	    }).get().join(",");
+
+	    $("b").append(document.createTextNode(list));
+	</script>
+	 
+</body>
+</html>

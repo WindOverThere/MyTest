@@ -1,0 +1,42 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+        p{
+            height: 30px;
+        }
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+    <a href="example.html" hreflang="en">Some text</a> 
+     
+    <a href="example.html" hreflang="en-UK">Some other text</a>
+     
+    <a href="example.html" hreflang="english">will not be outlined</a>
+     
+    <script>
+        $('a[hreflang|="en"]').css('border','3px dotted green');
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
