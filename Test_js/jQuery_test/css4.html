@@ -1,0 +1,51 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+        div { width: 20px; height: 15px; background-color: #f33; }
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+
+      <div>click</div>
+      <div>click</div>
+     
+    <script>
+      $("div").click(function() {
+        $(this).css({
+          width: function(index, value) {
+            return parseFloat(value) * 1.2;
+          },
+          height: function(index, value) {
+            return parseFloat(value) * 1.2;
+          }
+     
+        });
+      });
+    </script>
+     
+     
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
