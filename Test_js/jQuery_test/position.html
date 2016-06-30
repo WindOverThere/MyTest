@@ -1,0 +1,30 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+ 
+		div { padding: 15px;}
+		p { margin-left:10px; }
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+ 
+	<div>
+		<p>Hello</p>
+	</div>
+	<p></p>
+ 
+	<script>
+		var p = $("p:first");
+		var position = p.position();
+		
+		console.log(position);
+
+		$("p:last").text( "left: " + position.left + ", top: " + position.top );
+	</script>
+	 
+</body>
+</html>

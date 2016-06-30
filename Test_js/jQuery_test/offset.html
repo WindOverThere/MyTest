@@ -1,0 +1,49 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left:200px;
+            top:250px;
+        }
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+
+    <div>ddghjgjkjh</div>
+    <p></p>
+    
+    <script>
+        $("div:first").click(function (){
+            $("p:first").text( "left:" + $(this).offset().left + "px; top:" + $(this).offset().top + "px");
+        })
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
