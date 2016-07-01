@@ -1,0 +1,69 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		div {
+			width:40px;
+			height:40px;
+			margin:10px;
+			float:left;
+		    border:2px solid blue;
+		}
+		span { color:red; font-weight:bold; }
+		button { margin:5px; }
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+	<p><button>Turn slice yellow</button>
+	<span>Click the button!</span></p>
+	<div></div>
+	<div></div>
+
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+
+	<div></div>
+	<div></div>
+
+	<script>
+		function colorEm() {
+		  var $div = $("div");
+
+		  var start = Math.floor(Math.random() *
+		                         Math.random() *
+		                         $div.length);
+		  var end = Math.floor(Math.random() *
+		                       ($div.length - start)) +
+		                       start + 1;
+		  if (end == $div.length) end = undefined;
+		  $div.css("background", "");
+		  if (end){
+		    $div.slice(start, end).css("background", "yellow");
+		   }else{
+		    $div.slice(start).css("background", "yellow")
+			}	
+		 
+		  $("span").text('$("div").slice(' + start +
+		                 (end ? ', ' + end : '') +
+		                 ').css("background", "yellow");');
+		}
+		 
+		$("button").click(colorEm);
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+

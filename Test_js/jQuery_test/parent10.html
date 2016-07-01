@@ -1,0 +1,49 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		div,p { margin:10px; }
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+	  <div>div,
+	    <span>span, </span>
+	    <b>b </b>
+	 
+	  </div>
+	  <p>p,
+	    <span>span,
+	      <em>em </em>
+	    </span>
+	  </p>
+	 
+	  <div>div,
+	    <strong>strong,
+	      <span>span, </span>
+	      <em>em,
+	        <b>b, </b>
+	      </em>
+	 
+	    </strong>
+	    <b>b </b>
+	  </div>
+	<script>
+		$("*", document.body).each(function () {
+		  var parentTag = $(this).parent().get(0).tagName;
+		  $(this).prepend(document.createTextNode(parentTag + " > "));
+		});
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+

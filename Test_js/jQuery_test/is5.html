@@ -1,0 +1,43 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+
+	<ul id="browsers">
+	  <li>Chrome</li>
+	  <li>Safari</li>
+	  <li>Firefox</li>
+	  <li>Opera</li>
+	</ul>
+	<script>
+
+		var $alt = $("#browsers li:nth-child(2n)").css("background", "#0ff");
+
+		$("li").click(function (){
+			var $li = $(this);
+
+			if($li.is($alt)){
+				$li.slideUp();
+			}else{
+				$li.css("background",'red');
+			};
+
+		});
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+

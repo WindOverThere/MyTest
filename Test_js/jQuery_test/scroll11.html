@@ -1,0 +1,35 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		div { color:blue; }
+		p { color:green; }
+		span { color:red; display:none; }
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body style="height:2000px;">	
+	<div>Try scrolling the iframe.</div>
+	<p>Paragraph - <span>Scroll happened!</span></p>
+
+	<script>
+		$("p").clone().appendTo(document.body);
+		$("p").clone().appendTo(document.body);
+		$("p").clone().appendTo(document.body);
+		$(window).scroll(function () {
+		  $("span").css("display", "inline").fadeOut("slow");
+		});
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		div { width:50px; height:50px; margin:10px; float:left;
+		 background:yellow; border:2px solid white; }
+		.green { background:#8f8; }
+		.gray { background:#ccc; }
+		#blueone { background:#99f; }
+    </style>
+    <script src="./jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+	<div></div>
+	<div id="blueone"></div>
+	<div></div>
+	<div class="green"></div>
+
+	<div class="green"></div>
+	<div class="gray"></div>
+	<div></div>
+	<script>
+
+		$('div').not($(".green,#blueone")).css('border-color', 'red');
+		
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+
