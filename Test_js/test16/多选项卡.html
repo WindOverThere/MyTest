@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body{position: relative;}
+	img{width: 600px; height:400px; display: none;}
+	#btnLeft{width: 200px; height:400px;float:left;}
+	#btnLeft input{width:200px; height: 100px;}
+	#showPic{width:600px; height: 400px;position: relative;float:left;}
+	#showPic div{display: none; width:600px; height: 400px; background: #000;}
+	#showPic .active{display: block;}
+	#showPic input{width:100px; height: 50px;}
+	#showPic input:nth-of-type(1){position: absolute;left:0;bottom:0;}
+	#showPic input:nth-of-type(2){position: absolute;left:100px;bottom:0;}
+	#showPic input:nth-of-type(3){position: absolute;left:200px;bottom:0;}
+	#showPic input:nth-of-type(4){position: absolute;left:300px;bottom:0;}
+	#showPic input:nth-of-type(5){position: absolute;left:400px;bottom:0;}
+	#showPic input:nth-of-type(6){position: absolute;left:500px;bottom:0;}
+</style>
+<script type="text/javascript">
+/*	function $( selector,content ){
+		var firstChar = selector.charAt(0);
+		if( firstChar == "#"){
+			return document.getElementById(selector.substring(1));
+		}else{
+			var content = content || document;
+			return content.getElementsByTagName(selector);
+		}
+	}
+*/
+	window.onload = function (){
+		var oBtnLeft = document.getElementById('btnLeft');
+		var aInputL = oBtnLeft.getElementsByTagName('input');
+		var oShowPic = document.getElementById('showPic');
+		var aDiv = oShowPic.getElementsByTagName('div');
+
+		for (var i = 0; i < aInputL.length; i++) {
+			aInputL[i].index = i;
+			aInputL[i].onclick = function (){
+				for (var i = 0; i < aInputL.length; i++) {
+					aDiv[i].style.display = "none";
+					aInputL[i].style.background = "";
+				};
+				aDiv[this.index].style.display = "block";
+				this.style.background = "yellow";
+			}
+		};
+		for (var i = 0; i < aDiv.length; i++) {
+			fn(aDiv[i]);
+		};
+		function fn(aD){
+			var aInput2 = aD.getElementsByTagName('input');
+			var aImg = aD.getElementsByTagName('img');
+
+			for (var i = 0; i < aInput2.length; i++) {
+				aInput2[i].index = i;
+				aInput2[i].onmouseover = function (){
+					for (var i = 0; i < aInput2.length; i++) {
+						aImg[i].style.display = "none";
+						aInput2[i].style.background = "";
+					};
+					aImg[this.index].style.display = "block";
+					this.style.background = "red";
+				};
+			};
+		}
+	}
+</script>
+</head>
+<body>
+	<section id="btnLeft">
+		<input style="background:yellow;" type="button" value="团购" />
+		<input type="button" value="特惠" />
+		<input type="button" value="推荐" />
+		<input type="button" value="活动" />		
+	</section>
+	<section id="showPic">
+		<div class="active">
+			<input style="background:red;" type="button" value="333" />
+			<input type="button" value="444" />	
+			<img style="display:block;" src="image/1.jpg" />
+			<img src="image/2.jpg" />
+		</div>
+		<div>
+			<input style="background:red;" type="button" value="555" />
+			<input type="button" value="666" />
+			<input type="button" value="888" />	
+			<img style="display:block;" src="image/5.jpg" />
+			<img src="image/6.jpg" />
+			<img src="image/7.jpg" />
+		</div>
+		<div>
+			<input style="background:red;" type="button" value="999" />
+			<input type="button" value="000" />
+			<input type="button" value="111" />
+			<input type="button" value="222" />	
+			<img style="display:block;" src="image/9.jpg" />
+			<img src="image/10.jpg" />
+			<img src="image/1.jpg" />
+			<img src="image/2.jpg" />			
+		</div>
+		<div>
+			<input style="background:red;" type="button" value="333" />
+			<input type="button" value="444" />
+			<input type="button" value="555" />
+			<input type="button" value="555" />
+			<input type="button" value="555" />
+			<input type="button" value="666" />	
+			<img style="display:block;" src="image/4.jpg" />
+			<img src="image/7.jpg" />
+			<img src="image/5.jpg" />
+			<img src="image/15.jpg" />	
+			<img src="image/13.jpg" />	
+			<img src="image/11.jpg" />		
+		</div>
+	</section>
+</body>
+</html>
