@@ -1,0 +1,45 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+
+	<p>This is text</p>
+
+	<script type="text/javascript">
+
+/*		$("p").on("click",function (){
+			alert($(this).text());
+		})*/
+
+		function myHandler(event) {
+		  alert(event.data.foo);
+		}
+		$("p").on("click", {foo: "bar"}, myHandler)
+
+	</script>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
