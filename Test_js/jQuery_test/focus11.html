@@ -1,0 +1,44 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+
+		span {display:none;}
+
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+	<p><input type="text" /> <span>focus fire</span></p>
+	<p><input type="password" /> <span>focus fire</span></p>
+	<script>
+
+		$("input").focus(function (){
+			$(this).next().css("display","inline").fadeOut(1000)
+		});
+		
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

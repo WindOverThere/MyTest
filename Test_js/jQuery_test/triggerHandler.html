@@ -1,0 +1,53 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		button { margin:10px; }
+		div { color:blue; font-weight:bold; }
+		span { color:red; }
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+	<button id="old">.trigger("focus")</button>
+	<button id="new">.triggerHandler("focus")</button><br/><br/>
+
+	<input type="text" value="To Be Focused"/>
+
+	<script>
+		 
+		$("#old").click(function(){
+			$("input").trigger("focus");
+		});
+		$("#new").click(function(){
+			$("input").triggerHandler("focus");
+		});
+		$("input").focus(function(){
+			$("<span>Focused!</span>").appendTo("body").fadeOut(1000);
+		});
+		 
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+
+		button {
+			margin: 5px;
+		}
+		button#theone {
+			color: red;
+			background: yellow;
+		}
+
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+
+	<button id="theone">Does nothing...</button>
+	<button id="bind">Bind Click</button>
+	<button id="unbind">Unbind Click</button>
+	<div style="display:none;">Click!</div>
+	 
+	<script>
+
+		function aClick() {
+		  $( "div" ).show().fadeOut( "slow" );
+		};
+
+		$( "#bind" ).click(function() {
+		  $( "#theone" )
+		    .bind( "click", aClick )
+		    .text( "Can Click!" );
+		});
+
+		$( "#unbind" ).click(function() {
+		  $( "#theone" )
+		    .unbind( "click", aClick )
+		    .text( "Does nothing..." );
+		});
+
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

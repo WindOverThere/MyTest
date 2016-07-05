@@ -1,0 +1,79 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+
+		fieldset { margin-bottom: 1em; }
+		input { display: block; margin-bottom: .25em; }
+		#print-output {
+		  width: 100%;
+		}
+		.print-output-line {
+		  white-space: pre;
+		  padding: 5px;
+		  font-family: monaco, monospace;
+		  font-size: .7em;
+		}
+
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+	<form>
+	  <fieldset>
+	    <label for="target">Type Something:</label>
+	    <input id="target" type="text" />
+	  </fieldset>
+	</form>
+
+	<button id="other">
+	  Trigger the handler
+	</button>
+
+	<script type="text/javascript" src="/resources/events.js"></script>
+
+	<script>
+		var xTriggered = 0;
+
+		$('#target').keydown(function(event) {
+		  if (event.which == 13) {
+		     event.preventDefault();
+		   }
+		   xTriggered++;
+
+		   var msg = 'Handler for .keydown() called ' + xTriggered + ' time(s).';
+
+		  $.print(msg, 'html');
+		  $.print(event);
+		  
+		});
+		 
+		$('#other').click(function() {
+		  $('#target').keydown();
+		});
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
