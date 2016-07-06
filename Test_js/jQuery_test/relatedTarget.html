@@ -1,0 +1,43 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		
+
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+	<div><a href="http://jquery.com">default click action is prevented</a></div>
+	<div id="log"></div>
+	 
+	<script>
+		$("a").mouseout(function (event){
+			alert(event.relatedTarget.nodeName);
+		})
+
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

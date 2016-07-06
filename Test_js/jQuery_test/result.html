@@ -1,0 +1,49 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		
+
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+	 
+	<button>display event.result</button>
+	<p></p>
+	 
+	<script>
+		$("button").click(function(event) {
+		  return "hey";
+		});
+
+		$("button").mouseover(function(event) {
+			console.log(event);
+		  $("p").html( event.result );
+		});
+
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

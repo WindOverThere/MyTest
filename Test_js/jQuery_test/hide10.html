@@ -1,0 +1,69 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		span { background:#def3ca; padding:3px; float:left; }
+
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+
+	<button id="hidr">Hide</button>
+	<button id="showr">Show</button>
+
+	<div>
+
+		<span>Once</span> <span>upon</span> <span>a</span>
+		<span>time</span> <span>there</span> <span>were</span>
+		<span>three</span> <span>programmers...</span>
+
+	</div>
+
+
+	<script>
+		$("#hidr").click(function () {
+		  $("span:last-child").hide("fast", function () {
+		    // use callee so don't have to name the function
+		    $(this).prev().hide("fast", arguments.callee);
+		  });
+		});
+		$("#showr").click(function () {
+		  $("span").show(2000);
+		});
+
+		$("#hidr").click(function (){
+			$("span:last-child").hide("fast", function (){
+				$(this).prev().hide("fast",arguments.callee);
+			});
+		});
+
+		$("#showr").click(function (){
+			$("span").show(2000);
+		});
+
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

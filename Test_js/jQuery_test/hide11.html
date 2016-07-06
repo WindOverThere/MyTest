@@ -1,0 +1,50 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		div { background:#ece023; width:30px;
+		        height:40px; margin:2px; float:left; }
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+	<div></div>
+
+	<script>
+
+
+		for (var i = 0; i < 5; i++) {
+			$("<div>").appendTo(document.body);
+		};
+
+		$("div").click(function (){
+			$(this).hide(2000,function (){
+				$(this).remove();
+			})
+		})
+
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
