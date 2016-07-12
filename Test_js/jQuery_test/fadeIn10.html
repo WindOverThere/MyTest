@@ -1,0 +1,50 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		span { color:red; cursor:pointer; }
+		div { margin:3px; width:80px; display:none;
+		height:80px; float:left; }
+		div#one { background:#f00; }
+		div#two { background:#0f0; }
+		div#three { background:#00f; }
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+	<span>Click here...</span>
+	 
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+
+	<script>
+		$(document.body).click(function () {
+		  $("div:hidden:first").fadeIn("slow");
+		});
+		    
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
