@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body,ul,ol,h2,p{padding: 0; margin:0;}
+	body{font:16px "微软雅黑";}
+	.wrap{width:380px;background: #ccc;padding: 10px;}
+	header{height:30px; border-bottom: 2px solid #8ea2af;}
+	h2{float:left; width: 200px; color: #123344;}
+	nav{float:left; width: 180px; height: 30px; line-height: 30px; text-align: center; color: #255c7b;}
+	nav span{float:left; width: 50px; height: 28px; margin-left: 5px; border:2px solid #8ea2af; border-bottom:none; cursor: pointer;}
+	li{list-style: none; }
+	.list ol li{height:30px; line-height: 30px; border-bottom: 1px dashed #fff;}
+	.list div{display: none;}
+	.list ol{display: none;}
+	.list .show{display: block;}
+	img{width:100px; height: 100px;margin-left: 100px; display: none;}
+</style>
+<script type="text/javascript">
+	function $( selector,content ){
+		var firstChar = selector.charAt(0);
+		if( firstChar == "#" ){
+			return document.getElementById(selector.substring(1))
+		}else{
+			var content = content || document;
+			return content.getElementsByTagName(selector)
+		}
+	}
+	window.onload = function (){
+		var aSpan = $("span");
+		var aOl = $("ol");
+
+		for (var i = 0; i < aSpan.length; i++) {
+			aSpan[i].index = i;
+			aSpan[i].onclick = function (){
+				for (var j = 0; j < aSpan.length; j++) {
+					aOl[j].style.display = "none";
+					aSpan[j].style.background = "#ccc";
+				};				
+				aOl[this.index].style.display = "block";
+				this.style.background = "#fff";
+			}
+		};
+		for (var i = 0; i < aOl.length; i++) {
+			fn( aOl[i] );
+		};
+		function fn(aD){
+			var aList = aD.getElementsByTagName('li');
+			var aP = aD.getElementsByTagName('p');
+			var aImg = aD.getElementsByTagName('img');
+
+			for (var i = 0; i < aList.length; i++) {
+				aList[i].index = i;
+				aList[i].onmouseover = function (){
+					for (var i = 0; i < aList.length; i++) {
+						aList[i].style.cssText = "";
+						aImg[i].style.display = "";
+						aP[i].style.display = "";
+					};
+					this.style.cssText = "height:100px; line-height: 100px; border-bottom: 1px dashed #000; background: #fff;";
+					aP[this.index].style.display = "none";
+					aImg[this.index].style.display = "block";
+				}
+			};
+		}
+
+
+	}
+</script>
+</head>
+<body>
+	<section class="wrap">
+		<header>
+			<h2>观看排行榜</h2>
+			<nav>
+				<span class="active">每日</span>
+				<span>每周</span>
+				<span>全部</span>
+			</nav>
+		</header>
+		<section id="newsList" class="list">
+			<ol class="show">
+				<li style="height:100px; line-height: 100px; border-bottom: 1px dashed #000; background: #fff;">
+					<p style="display: none;">1、开国将星风云录：九大开国将帅的传奇人生</p>
+					<img style="display: block;" src="image/1.jpg" />
+				</li>
+				<li>
+					<p>2、武则天墓之谜：40万大军挖不动的千年古墓</p>
+					<img src="image/2.jpg" />
+				</li>
+				<li>
+					<p>3、舌尖上的中国第2季加强版</p>
+					<img src="image/3.jpg" />
+				</li>
+				<li>
+					<P>4、电影人物：每部大片都有主角和配角</P>
+					<img src="image/4.jpg" />
+				</li>
+				<li>
+					<p>5、清史拍案惊奇：清宫疑案正解</p>
+					<img src="image/5.jpg" />
+				</li>
+				<li>
+					<p>6、武则天墓之谜：40万大军挖不动的千年古墓</p>
+					<img src="image/2.jpg" />
+				</li>
+				<li>
+					<p>7、开国将星风云录：九大开国将帅的传奇人生</p>
+					<img src="image/1.jpg" />
+				</li>
+				<li>
+					<p>8、舌尖上的中国第2季加强版</p>
+					<img src="image/8.jpg" />
+				</li>
+				<li>
+					<p>9、武则天墓之谜：</p>
+					<img src="image/2.jpg" />
+				</li>
+				<li>
+					<p>10、舌尖上的中国第2季加强版</p>
+					<img src="image/13.jpg" />
+				</li>
+			</ol>
+			<ol>
+				<li style="height:100px; line-height: 100px; border-bottom: 1px dashed #000; background: #fff;">
+					<p style="display: none;">1、九大开国将帅的传奇人生</p>
+					<img style="display: block;" src="image/6.jpg" />
+				</li>
+				<li>
+					<p>2、40万大军挖不动的千年古墓</p>
+					<img src="image/7.jpg" />
+				</li>
+				<li>
+					<p>3、舌尖上的中国第2季加强版</p>
+					<img src="image/8.jpg" />
+				</li>
+				<li>
+					<P>4、每部大片都有主角和配角</P>
+					<img src="image/9.jpg" />
+				</li>
+				<li>
+					<p>5、清宫疑案正解</p>
+					<img src="image/10.jpg" />
+				</li>
+				<li>
+					<p>6、舌尖上的中国第2季加强版</p>
+					<img src="image/3.jpg" />
+				</li>
+				<li>
+					<P>7、电影人物：每部大片都有主角和配角</P>
+					<img src="image/4.jpg" />
+				</li>
+				<li>
+					<p>8、清史拍案惊奇：清宫疑案正解</p>
+					<img src="image/5.jpg" />
+				</li>
+				<li>
+					<p>9、武则天墓之谜：40万大军挖不动的千年古墓</p>
+					<img src="image/2.jpg" />
+				</li>
+				<li>
+					<p>10、开国将星风云录：九大开国将帅的传奇人生</p>
+					<img src="image/1.jpg" />
+				</li>
+			</ol>
+			<ol>
+				<li style="height:100px; line-height: 100px; border-bottom: 1px dashed #000; background: #fff;">
+					<p style="display: none;">1、开国将星风云录：</p>
+					<img style="display: block;" src="image/11.jpg" />
+				</li>
+				<li>
+					<p>2、武则天墓之谜：</p>
+					<img src="image/2.jpg" />
+				</li>
+				<li>
+					<p>3、舌尖上的中国第2季加强版</p>
+					<img src="image/13.jpg" />
+				</li>
+				<li>
+					<P>4、电影人物：</P>
+					<img src="image/14.jpg" />
+				</li>
+				<li>
+					<p>5、清史拍案惊奇：</p>
+					<img src="image/5.jpg" />
+				</li>
+				<li>
+					<P>6、每部大片都有主角和配角</P>
+					<img src="image/9.jpg" />
+				</li>
+				<li>
+					<p>7、清宫疑案正解</p>
+					<img src="image/10.jpg" />
+				</li>
+				<li>
+					<p>8、舌尖上的中国第2季加强版</p>
+					<img src="image/3.jpg" />
+				</li>
+				<li>
+					<P>9、电影人物：每部大片都有主角和配角</P>
+					<img src="image/4.jpg" />
+				</li>
+				<li>
+					<p>10、清史拍案惊奇：清宫疑案正解</p>
+					<img src="image/5.jpg" />
+				</li>
+			</ol>
+		</section>
+	</section>
+</body>
+</html>

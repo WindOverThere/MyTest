@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body{position: relative;}
+	input{width: 100px; height: 50px;}
+	div{width: 100px; height: 100px; background: red; margin-top:60px; position: absolute; left:0; top:0;}
+</style>
+<script type="text/javascript">
+	function getStyle( obj,attr ){
+		if (obj.currentStyle) {
+			return obj.currentStyle[attr];
+		} else {
+			return getComputedStyle(obj)[attr];
+		};
+	}
+	window.onload = function (){
+		var start = document.getElementsByTagName('input')[0];
+		var rm = document.getElementsByTagName('div')[0];
+		var n = parseInt(getStyle( rm,"left" ));
+		var timer = null;
+
+		start.onclick = function (){
+			clearInterval(timer);
+			timer = setInterval(function (){
+				n += 10;
+				if( n >= 500 ){
+					n = 500;
+				}
+				rm.style.left = n + "px";
+			},30)
+		}	
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="go!!!" />
+	<br />
+	<div style=" position: absolute;left:0; top:0; "></div>
+</body>
+</html>

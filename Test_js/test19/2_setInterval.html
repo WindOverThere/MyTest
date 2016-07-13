@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	input{width: 100px; height: 50px;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var start = document.getElementsByTagName('input')[0];
+		var pic = document.getElementsByTagName('img')[0];
+
+		var n = 0;
+		var timer = null;
+
+		start.onclick = function (){
+			timer = setInterval( function (){
+				n++;
+				//console.log(n);
+				if (n >= 6) {
+					n = 1;
+					//clearInterval(timer);
+				}
+				pic.src = "img/" + n + ".jpg";
+			},500 )
+		}	
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="go!!!" />
+	<br />
+	<img src="img/1.jpg">
+</body>
+</html>
