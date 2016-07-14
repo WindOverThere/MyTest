@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	#box{width: 100px; height: 100px; background: red;position:absolute; left:200px; top:200px;}
+	#box2{width: 100px; height: 100px; background: red;position:absolute; left:400px; top:200px;} 
+</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	function fnShake(obj,attr,rate){
+		if( obj.timer ) return;
+
+		var cur = parseInt(getStyle(obj,attr));
+		var arr = [];
+		var n = 0;
+
+		for (var i = rate; i > 0; i-=5) {
+			arr.push(-i,i);
+		}
+		arr.push(0);
+		obj.timer = setInterval(function (){
+			obj.style[attr] = arr[n]+cur + "px";
+			n++;
+			if ( n >= arr.length) {
+				clearInterval(obj.timer);
+				obj.timer = null;
+			}			
+		},30)
+	}
+	window.onload = function (){
+		var shakeDiv = $("#box");
+		var shakeDiv2 = $("#box2");
+		shakeDiv.onmouseover = function (){
+			fnShake(shakeDiv,"left",30);
+		}
+		shakeDiv2.onmouseover = function (){
+			fnShake(shakeDiv2,"top",30);
+		}
+	}
+</script>
+</head>
+<body>
+	<div id="box"></div>
+	<div id="box2"></div>
+</body>
+</html>

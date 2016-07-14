@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body,ul,h2,input{padding:0; margin:0; font-family: "微软雅黑";}
+	input{outline: none;border:none; font-size: 20px; cursor: pointer;}
+	.wrap{width: 400px; border:2px solid #babdbd; border-radius: 10px; margin: 10px auto; overflow: hidden;}
+	header{height: 30px; background: #425a7b; line-height: 30px; color: #fff;}
+	header h2{float: left; width: 200px; text-indent: 10px; font-size: 18px;}
+	header span{float: right;width: 70px;}
+	input{width: 400px;height: 30px;background: #efefe7;}
+	li{list-style: none; margin-top: 5px; height: 95px;background: #3a77c1; font-size: 80px;line-height: 95px; text-align: center;color: #fff;}
+	.listWrap{height: 500px; overflow: hidden;}
+</style>
+<script type="text/javascript">
+	function getStyle( obj,attr ){
+		if (obj.currentStyle) {
+			return obj.currentStyle[attr];
+		} else {
+			return getComputedStyle(obj)[attr];
+		};
+	}
+	function doMove(obj,attr,target,speed){
+		var current = parseInt(getStyle( obj,attr));
+		var timer = null;
+
+		if (current < target) {
+			speed = Math.abs(speed);
+		} else {
+			speed = -Math.abs(speed);
+		}
+
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function (){
+			current += speed;
+			if( current >= target && speed  > 0 || current <= target && speed < 0 ){
+				clearInterval(obj.timer);
+				current = target;
+			};
+			obj.style[attr] = current + "px";
+		},30)		
+	}
+	window.onload = function (){
+		var trunPage = document.getElementsByTagName('input');
+		var list = document.getElementById('list');
+
+		trunPage[0].onmousedown = function (){
+			doMove(list,"margin-top",-1500,10);
+		}
+
+		trunPage[0].onmouseup = function (){
+			var timer = null;
+			clearInterval(list.timer);
+		}
+		trunPage[1].onmousedown = function (){
+			doMove(list,"margin-top",0,10);
+		}
+		trunPage[1].onmouseup = function (){
+			clearInterval(list.timer);
+		}
+	}
+</script>
+</head>
+<body>
+	<section class="wrap">
+		<header>
+			<h2>妙味课堂</h2>
+			<span href="javascript">>>更多</span>
+		</header>
+		<input type="button" value="向上" />
+		<div class="listWrap">
+			<ul id="list">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>
+				<li>11</li>
+				<li>12</li>
+				<li>13</li>
+				<li>14</li>
+				<li>15</li>
+				<li>16</li>
+				<li>17</li>
+				<li>18</li>
+				<li>19</li>
+				<li>20</li>
+			</ul>
+		</div>
+		<input type="button" value="向下" />
+	</section>
+</body>
+</html>

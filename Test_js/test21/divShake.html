@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	div{width: 100px; height: 100px; background: red;position:absolute; left:200px; top:200px;}
+</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	window.onload = function (){
+		var shakeDiv = $("#box");
+		var curLeft = 200;
+		var arr = [];
+		var n = 0;
+
+		for (var i = 30; i > 0; i-=5) {
+			arr.push(-i,i);
+		}
+		arr.push(0);
+		//console.log( arr );
+		var timer = null;
+		
+		shakeDiv.onmouseover = function (){
+			var _this = this;
+			timer = setInterval(function (){
+				_this.style.left = arr[n]+curLeft + "px";	//原来的不加"_"的this指向的是window
+				n++;
+			},30)
+			if ( n >= arr.length) {
+				clearInterval(timer);
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>	
+	body{background: url(i/bodyBg.jpg);}
+.wrap{width: 976px; height:840px;  margin:10px auto; overflow: hidden;}
+	section{width:488px; height: 780px; margin:10px auto; position: relative;}
+	#imgList{ width:2440px;height: 780px;position: absolute;left:0;top:0px; transition: 1s;}
+	img{width:488px; float: left;}
+	#point{width: 488px; height:50px; position: absolute;left:0; bottom:-50px;}
+	#point div{width: 50px; height: 50px; float:left; margin-left:55px; background: #222;cursor: pointer;}
+	a{width: 244px; height: 780px; background: #000;font-size:50px; line-height: 780px; color: #fff; text-align: center; text-decoration: none;font-family: "微软雅黑";}
+	.pgup{position: absolute; left:-244px; top:0;}
+	.pgdn{position: absolute; right:-244px; top:0;}
+	#breviary{width: 100%; height: 100px; position: absolute;left:17px;bottom:20px;}
+	#breviary span{width: 100px; height: 100px; display: none; }
+	span:nth-of-type(1){ position: absolute; left:0; bottom:0; background:#000 url(i/1.jpg) no-repeat center center/contain;}
+	span:nth-of-type(2){ position: absolute; left:117px; bottom:0; background:#000 url(i/2.jpg) no-repeat center center/contain;}
+	span:nth-of-type(3){ position: absolute; left:234px; bottom:0; background:#000 url(i/3.jpg) no-repeat center center/contain;}
+	span:nth-of-type(4){ position: absolute; left:351px; bottom:0; background:#000 url(i/4.jpg) no-repeat center center/contain;}
+</style>
+<script type="text/javascript">
+	function $(selector,content){
+	    if( selector.charAt(0) === "#" ){
+	        return document.getElementById(selector.substring(1))
+	    }else{
+	        content = content || document;
+	        return  content.getElementsByTagName(selector);
+	    };
+	};
+	function getStyle( obj,attr ){
+		if (obj.currentStyle) {
+			return obj.currentStyle[attr];
+		} else {
+			return getComputedStyle(obj)[attr];
+		};
+	}
+	window.onload = function (){
+		var tabBtn = $("a");
+		var imgList = $("#imgList");
+		var oimg = $("img",imgList);
+		var currentLeft = parseInt(getStyle(imgList,"left"));
+		var currentWidth = parseInt(getStyle(oimg[0],"width"));
+		var pointDiv = $("div",$("#point"));
+		var n = 0;
+		var timer = null;
+		var breviaryPic = $("span",$("#breviary"));
+
+		function autoPlay(){
+			timer = setInterval(function(){
+				n++;
+				if (n > oimg.length-1) {
+					n = 0;
+				}
+				imgList.style.left = -(n*currentWidth) + "px";
+				for (var i = 0; i < pointDiv.length; i++) {
+					pointDiv[i].style.background = "";
+				}
+				pointDiv[n].style.background = "#666";
+			},2000)
+		}
+		autoPlay();
+
+		tabBtn[1].onmouseover = function (){	//鼠标移入 下一张
+			clearInterval(timer);
+			this.style.background = "#0f0f0f";
+		}
+
+		tabBtn[1].onmouseout = function (){		//鼠标移开 下一张
+			autoPlay();
+			this.style.background = "";
+		}
+
+		tabBtn[0].onmouseover = function (){	//鼠标移入 上一张
+			clearInterval(timer);
+			this.style.background = "#0f0f0f";
+		}
+
+		tabBtn[0].onmouseout = function (){		//鼠标移开 上一张
+			autoPlay();
+			this.style.background = "";
+		}
+		tabBtn[1].onclick = function (){	//点击 下一张
+			n++;
+			if (n > oimg.length-1) {
+				n = 0;
+			}
+			imgList.style.left = -(n*currentWidth) + "px";
+			for (var i = 0; i < pointDiv.length; i++) {
+				pointDiv[i].style.background = "";
+			}
+			pointDiv[n].style.background = "#666";
+		}
+		tabBtn[0].onclick = function (){	//点击 上一张
+			n--;
+			if (n < 0) {
+				n = oimg.length-1;
+			}
+			imgList.style.left = -(n*currentWidth) + "px";
+			for (var i = 0; i < pointDiv.length; i++) {
+				pointDiv[i].style.background = "";
+			}
+			pointDiv[n].style.background = "#666";
+		}
+
+		for (var i = 0; i < pointDiv.length; i++) {
+			pointDiv[i].index = i;
+			pointDiv[i].onmouseover = function (){
+				clearInterval(timer);
+				n = this.index;
+				for (var i = 0; i < pointDiv.length; i++) {
+					pointDiv[i].style.background = "";
+					oimg[this.index].style.dispaly = "none";
+				}
+				this.style.background = "#666";
+				imgList.style.left = -(n*currentWidth) + "px";
+				imgList.style.left = -(n*currentWidth) + "px";
+				breviaryPic[this.index].style.display = "block";
+			}
+			pointDiv[i].onmouseout = function (){
+				autoPlay();
+				breviaryPic[this.index].style.display = "none";
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<div class="wrap">
+		<section>
+			<div id="imgList">
+				<img src="i/1.jpg" />
+				<img src="i/2.jpg" />
+				<img src="i/3.jpg" />
+				<img src="i/4.jpg" />
+			</div>
+			<div id="point">
+				<div style="background: #666;"></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<a class="pgup" href="javascript:;">上一张</a>
+			<a class="pgdn" href="javascript:;">下一张</a>
+			<div id="breviary">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>			
+			</div>
+		</section>		
+	</div>
+
+</body>
+</html>

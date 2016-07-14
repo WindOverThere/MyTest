@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body{font:24px/100px "微软雅黑";}
+	input{width: 100px; height: 50px;}
+	li{list-style: none;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var oUl = document.getElementById('list');  
+		var aLi = document.getElementsByTagName('li');
+		var num = 0;
+		var max = -Infinity;
+		var min = Infinity;
+
+		for(var i=0; i<aLi.length; i++){
+			fn1(aLi[i]);
+		}
+		function fn1(oLi){
+			var oUl = document.getElementById('list');  
+			var aBtn = oLi.getElementsByTagName('input');
+			var oStrong = oLi.getElementsByTagName('strong')[0];
+			var oEm = oLi.getElementsByTagName('em')[0];
+			var oSpan = oLi.getElementsByTagName('span')[0];
+			var n1 = Number(oStrong.innerHTML);
+			var n2 = parseFloat(oEm.innerHTML);
+
+			var oText = document.getElementById('text');
+			var oSpan2 = oText.getElementsByTagName('span')[0];
+			var oEm2 = oText.getElementsByTagName('em')[0];
+			var oStrong2 = oText.getElementsByTagName('strong')[0];
+			var aEm = oUl.getElementsByTagName('em');
+
+			aBtn[1].onclick = function (){
+				n1++;
+				num++;
+				oStrong.innerHTML = n1;
+				oSpan.innerHTML = n1*n2 + "元";
+				oStrong2.innerHTML = num;
+				oSpan2.innerHTML = parseFloat( oSpan2.innerHTML ) + n2;
+				for (var i = 0; i < aEm.length; i++) {
+					if( n1 != 0 && max < parseFloat(aEm[i].innerHTML) ){
+						max = parseFloat(aEm[i].innerHTML);
+					}
+				}
+				alert(max);
+			}
+			aBtn[0].onclick = function (){
+				n1--;
+				num--;
+				if(n1 < 0){
+					n1 = 0;
+					num = oStrong2.innerHTML;
+					oSpan2.innerHTML = parseFloat( oSpan2.innerHTML ) + n2;
+				};
+				oStrong.innerHTML = n1;
+				oSpan.innerHTML = n1*n2 + "元";
+				oStrong2.innerHTML = num;
+				oSpan2.innerHTML = parseFloat( oSpan2.innerHTML ) - n2;
+/*				for (var i = 0; i < aEm.length; i++) {
+					if( parseFloat(oStrong.innerHTML) !== 0 && min > parseFloat(aEm[i].innerHTML) ){
+						min = parseFloat(aEm[i].innerHTML);
+					}
+				}
+				alert(min);*/
+			}
+		}
+	}
+/*
+	1、 比较每种 个数不为0 的商品单价的数字大小,设置一个 负无穷的 变量；
+	  for循环去跟每个不为0的商品单价比较，如果大于设置的变量就记录下来,此为最大的数字。
+*/
+</script>
+</head>
+<body>
+<ul id="list">
+	<li>
+		<input type="button" value="-" />
+		<strong>0</strong>
+		<input type="button" value="+" />
+		单价：<em>10.5元</em>
+		小计：<span>0元</span>
+	</li>
+	<li>
+		<input type="button" value="-" />
+		<strong>0</strong>
+		<input type="button" value="+" />
+		单价：<em>11元</em>
+		小计：<span>0元</span>
+	</li>
+	<li>
+		<input type="button" value="-" />
+		<strong>0</strong>
+		<input type="button" value="+" />
+		单价：<em>40.5元</em>
+		小计：<span>0元</span>
+	</li>
+	<li>
+		<input type="button" value="-" />
+		<strong>0</strong>
+		<input type="button" value="+" />
+		单价：<em>25.5元</em>
+		小计：<span>0元</span>
+	</li>
+	<li>
+		<input type="button" value="-" />
+		<strong>0</strong>
+		<input type="button" value="+" />
+		单价：<em>30元</em>
+		小计：<span>0元</span>
+	</li>
+</ul>
+<p id="text">商品合计共：<strong>0</strong>件，共花费了：<span>0</span>元。其中最贵的商品单价是：<em>0</em>元</p>
+</body>
+</html>

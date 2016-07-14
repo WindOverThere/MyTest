@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	div{width: 100px; height: 100px; background: red;position: absolute;left:100px; top:100px; transition: 1s;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var oDiv = document.getElementsByTagName('div')[0];
+		oDiv.onclick = function (){
+			oDiv.style.left = "250px";
+		}
+		oDiv.addEventListener("webkitTransitionEnd",function(){
+			alert(123);
+		});
+	}
+</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

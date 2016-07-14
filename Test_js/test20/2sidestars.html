@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	div{width: 1000px; height: 100px; margin:100px auto; font-size: 60px; font-weight: bold; background: #ccc; line-height: 100px; padding:0 10px 0 50px;}
+	a{text-decoration: none; margin-left: -30px; padding-left: 20px;}
+</style>
+<script type="text/javascript">
+	function $( selector,content ){
+		var firstChar = selector.charAt(0);
+		if( firstChar === "#" ){
+			return document.getElementById( selector.substring(1) )
+		}else{
+			content = content || document;
+			return content.getElementsByTagName(selector)
+		}
+	};
+	window.onload = function (){
+		var aA = $("a",$("#wrap"));
+		var onOff = true; //开关
+		var n = 0;
+
+		for (var i = 0; i < aA.length; i++) {
+			aA[i].index = i;//索引值
+			aA[i].onmouseover = function (){
+				for (var i = 0; i < aA.length; i++) {
+					if (i <= 5) {//左边
+						if (i<this.index) {
+							aA[i].style.color = "blue";
+						} else {
+							aA[i].style.color = "yellow";
+						}
+					} else {//右边
+						if (i < this.index+1) {
+							aA[i].style.color = "red"
+						} else {
+							aA[i].style.color = "blue";
+						}
+					}
+				}
+			};
+			aA[i].onmouseout = function (){
+				for (var i = 0; i < aA.length; i++) {
+					if (onOff) {
+						aA[i].style.color = "";
+					} else {
+						if (i <= 5) {//左边
+							if (i<n) {
+								aA[i].style.color = "blue";
+							} else {
+								aA[i].style.color = "yellow";
+							}
+						} else {//右边
+							if (i < n+1) {
+								aA[i].style.color = "red"
+							} else {
+								aA[i].style.color = "blue";
+							}
+						}
+					};
+					
+				}
+			};
+			aA[i].onclick = function (){
+				n = this.index;	//记录当前的索引值
+				onOff = false; //点击之后变false；
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<a href="javascript:;">&star;</a>
+		<a href="javascript:;">&star;</a>
+		<a href="javascript:;">&star;</a>
+		<a href="javascript:;">&star;</a>
+		<a href="javascript:;">&star;</a>
+		<a href="javascript:;">&star;</a>
+		<a href="javascript:;">&star;</a>
+		<a href="javascript:;">&star;</a>
+		<a href="javascript:;">&star;</a>
+		<a href="javascript:;">&star;</a>
+		<a href="javascript:;">&star;</a>
+	</div>
+</body>
+</html>
