@@ -1,0 +1,63 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		div { color:blue; margin:2px; font-size:14px; }
+		span { color:red; }
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+
+</head>
+<body>
+	 
+	  <div>jQuery.isFunction(objs[0]) = <span></span></div>
+	 
+	  <div>jQuery.isFunction(objs[1]) = <span></span></div>
+	  <div>jQuery.isFunction(objs[2]) = <span></span></div>
+	  <div>jQuery.isFunction(objs[3]) = <span></span></div>
+	 
+	  <div>jQuery.isFunction(objs[4]) = <span></span></div>
+	 
+	<script>
+		function stub() {
+
+		}
+
+		var objs = [
+		      function () {},
+		      { x:15, y:20 },
+		      null,
+		      stub,
+		      "function"
+		    ];
+
+		$.each(objs,function (i) {
+			var isFunc = $.isFunction(objs[i]);
+			$("span").eq(i).text(isFunc);
+		})
+
+	</script>
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+</head>
+<body>
+
+	<div id="log"></div>
+
+	<script>
+		var object1 = {
+		  apple: 0,
+		  banana: { weight: 52, price: 100 },
+		  cherry: 97
+		};
+
+		var object2 = {
+		  banana: { price: 200 },
+		  durian: 100
+		};
+
+		// Merge object2 into object1
+		$.extend( object1, object2 );
+
+		// Assuming JSON.stringify - not available in IE<8
+		console.log(JSON.stringify( object1 ));
+		$( "#log" ).append( JSON.stringify( object1 ) );
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

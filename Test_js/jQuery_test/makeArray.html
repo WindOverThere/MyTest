@@ -1,0 +1,51 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		div { color:blue; margin:2px; font-size:14px; }
+		span { color:red; }
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+
+</head>
+<body>
+	<div>First</div>
+	<div>Second</div>
+	<div>Third</div>
+
+	<div>Fourth</div>
+
+	<script>
+
+	    var elems = document.getElementsByTagName("div");
+	    var arr = $.makeArray(elems);
+
+	    arr.reverse();
+	    $(arr).appendTo(document.body);
+
+
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+		div { color:blue; }
+		p { color:green; margin:0; }
+		span { color:red; }
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+
+</head>
+<body>
+	<div></div>
+	<p></p>
+	<span></span>
+
+	<script>
+/*	    var arr = [ "a", "b", "c", "d", "e" ];
+
+	    $("div").text(arr.join(", "));
+	 
+
+
+	    arr = jQuery.map(arr, function(n, i){
+	      return (n.toUpperCase() + i);
+	    });
+	    $("p").text(arr.join(", "));
+	 
+
+	 
+	    arr = jQuery.map(arr, function (a) {
+	      return a + a;
+	    });
+	    $("span").text(arr.join(", "));
+*/
+
+	    var arr = ["a","b","c","d","e"];
+
+	    $("div").text(arr.join(", "));
+
+	    arr = $.map(arr,function (n,i){
+	    	return (n.toUpperCase() + i);
+	    });
+	    $("p").text(arr.join(", "));
+
+	    arr = $.map(arr, function (a){
+	    	return a + a;
+	    })
+	    $("span").text(arr.join(", "));
+
+
+	</script>
+	 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

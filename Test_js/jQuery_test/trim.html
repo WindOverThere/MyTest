@@ -1,0 +1,55 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title>
+    <style>
+
+    </style>
+    <script src="jquery-2.2.1/jquery-2.2.1.js"></script>
+
+</head>
+<body>
+	<pre></pre>
+	<pre></pre>
+
+	<script>
+		var str = "  	 We are family U kown  ";
+
+		$("pre").eq(0).html("有空格的字符串：" + str + "？");
+		$("pre").eq(1).html("没有空格的字符串：" + $.trim(str) + "？");
+
+	</script>
+
+<!--
+	<pre id="original"></pre>
+	<pre id="trimmed"></pre>
+ 
+	<script>
+		var str = "         lots of spaces before and after         ";
+		$("#original").html("Original String: '" + str + "'");
+		$("#trimmed").html("$.trim()'ed: '" + $.trim(str) + "'");
+	</script>
+-->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
