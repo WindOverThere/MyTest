@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body,ul{margin:0;padding:0;list-style: none;font:20px "微软雅黑";}
+	a{text-decoration:none;}
+	nav{height: 40px; line-height: 40px;position: absolute; left:0; top:-45px;}
+	nav a{float:left;margin-left: 2px; color: #000; background: #2a7c87;padding:0 5px;}
+	img{border:none; vertical-align: top; width: 400px; height: 600px;display: none;}
+	.wrap{width: 400px; border:5px solid #666; margin:50px auto; padding: 10px;position: relative;}
+	.list li{width: 400px; height: 600px; position: relative;display: none;}
+	.list .picTitle{position:absolute; top:50px;right:-115px;background: #ccc; width: 100px;line-height: 30px;text-align: center;}
+	.list .picTitle span{float:left; width: 100px; height: 30px;}
+</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	window.onload = function (){
+		var aMemu = $("a");
+		var aPicWrap = $("li");
+		var oList = $("#list");
+		var aLi = $("li",oList);
+		var n = 0;
+		var m = 0;
+		for (var i = 0; i < aLi.length; i++) {
+			trunPic(aLi[i]);
+		}
+		setInterval(function(){
+			for (var i = 0; i < aMemu.length; i++) {
+				aMemu[i].style.cssText = "";
+				aPicWrap[i].style.display = "none";
+			}
+			n++;
+			if( n == aMemu.length){
+				n = 0;
+			}
+			aMemu[n].style.cssText = "background:#3cabba;color:#fff;";
+			aPicWrap[n].style.display = "block";
+		},100000)
+
+		function trunPic(id){
+			var aPictitle = $("span",id);
+			var aPic = $("img",id);
+			setInterval(function(){
+				for (var i = 0; i < aPictitle.length; i++) {
+					aPictitle[m].style.cssText = "";
+					aPic[i].style.display = "none";
+				}
+				m++;
+				console.log(m);
+				if( m == aPictitle.length){
+					m = 0;
+				}
+				aPictitle[m].style.cssText = "background:red; color:#fff";
+				aPic[m].style.display = "block";
+			},1000)			
+		}
+
+	}
+</script>
+</head>
+<body>
+	<section class="wrap">
+		<nav>
+			<a style="color:#fff;background:#3cabba" href="javascript:;">菜单一</a>
+			<a href="javascript:;">菜单二</a>
+		</nav>
+		<ul class="list" id="list">
+			<li style="display: block;">
+				<div class="pic">
+					<img style="display: block;" src="i/wanted1.jpg">
+					<img src="i/wanted2.jpg">
+					<img src="i/wanted3.jpg">
+				</div>
+				<div class="picTitle">
+					<span style="color: #fff;background: red;">图片1</span>
+					<span>图片2</span>
+					<span>图片3</span>
+				</div>
+			</li>
+			<li>
+				<div class="pic">
+					<img style="display: block;" src="i/wanted4.jpg">
+					<img src="i/wanted5.jpg">
+					<img src="i/wanted6.jpg">
+				</div>
+				<div class="picTitle">
+					<span style="color: #fff;background: red;">图片4</span>
+					<span>图片5</span>
+					<span>图片6</span>					
+				</div>
+			</li>
+		</ul>
+	</section>
+</body>
+</html>

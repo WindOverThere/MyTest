@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body,p{margin:0; padding: 0;}
+	img{border:none; vertical-align:top;}
+	.wrap{width: 500px; height: 300px; border:5px solid #ccc; margin:50px auto; overflow: hidden; position: relative;}
+	#picList{width: 600%; height: 300px;position: absolute; left:-500px; top:0; transition: 1s;}
+	img{width: 500px; height: 300px;float:left;}
+	#slideNum{width: 500px; height: 100px; position: absolute; left:0; bottom:-100px;color: #fff; font-size: 80px; text-align: center;line-height: 100px;}
+	#slideNum p{width: 100%; height: 100px; position: absolute;left:0; top:0; background: #000;opacity:.7; transition: 1s;}
+</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	window.onload = function (){
+		var picList = $("#picList");
+		var aPic = $("img",picList);
+		var n = 1;
+		var m = 0;
+		var currentWidth = parseInt(getStyle(aPic[0],"width"));//计算后的width
+		var currentPadding = parseInt(getStyle(aPic[0],"padding"));//计算后的padding
+		var aNum = $("p");
+		var currentPHeight = parseInt(getStyle(aNum[0],"height"));//计算后数字的height
+
+		setInterval(function (){
+			n++;
+			if( n === aPic.length){
+				n = 0;
+			}
+			picList.style.left = -n*currentWidth + "px";
+			picList.style.transition = "1s";
+/*			setTimeout( function (){
+				aNum[n-1].style.top = -currentPHeight + "px";
+			},300);*/
+			
+		},3000);
+
+
+		picList.addEventListener("webkitTransitionEnd",function (){
+			if( n >= aPic.length-1 ){
+				picList.style.transition = "none";
+				picList.style.left = "0px";
+				n = 0;
+			}
+			setInterval(function (){
+				m++;
+				if( m === aNum.length){
+					m = 0;
+				}
+				console.log(m);
+				//aNum[m+1].style.display = "block";
+				aNum[m+1].style.top = -currentPHeight + "px";
+			},100)
+/*			if( n === 0){
+				aNum[n + aNum.length-1].style.top = "0px";
+			}else{
+				aNum[n-1].style.top = "0px";
+			}*/
+		},500)
+	}
+</script>
+</head>
+<body>
+	<section class="wrap">
+		<div id="picList">
+			<img src="i/5.jpg" >
+			<img src="i/1.jpg" >
+			<img src="i/2.jpg" >
+			<img src="i/3.jpg" >
+			<img src="i/4.jpg" >
+			<img src="i/5.jpg" >
+		</div>
+		<div id="slideNum">
+			<p>5</p>
+			<p>1</p>
+			<p>2</p>
+			<p>3</p>
+			<p>4</p>
+			<p>5</p>
+		</div>
+	</section>
+</body>
+</html>
