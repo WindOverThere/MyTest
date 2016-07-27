@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ÎÞ±êÌâÎÄµµ</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var str = "          45   465         ";
+
+		//console.log( str.trim() );
+		var oUser = document.getElementById("user");
+
+		document.onclick = function (){
+			if( oUser.value.trim() === "" ){
+				alert("不能有空格");
+			}
+		}
+		
+	}
+</script>
+</head>
+<body>
+	<input id="user" type="text" />
+</body>
+</html>

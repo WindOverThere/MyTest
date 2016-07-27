@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body,p,ul{margin:0; padding: 0;list-style: none; font: 40px "微软雅黑";}
+	img{border:none; vertical-align:top; width: 400px; height: 250px;}
+	.wrap{width:400px; height: 250px; border:5px solid #999; margin:20px auto; position: relative; overflow: hidden;}
+	#picList{width: 200%;height: 250px; position: absolute;left:0;}
+	#picList li{width: 400px;height: 250px; float:left; top:0;position: relative;}
+	#picList p{width: 400px; height: 70px; background: #000; opacity:.5; color:#fff; text-align: center; line-height: 70px;position: absolute;left:0;bottom:-70px;}
+</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	window.onload = function (){
+		var aPic = ["i/1.jpg","i/2.jpg","i/3.jpg","i/4.jpg","i/5.jpg"];
+		var aNum = ["1","2","3","4","5"];
+
+		var oPicList = $( "#picList" );
+		var arrImg = $("img");
+		var textNum = $("p");
+		var n = 0;
+
+		setInterval( function (){
+			n++;
+			//console.log(n);
+			if( n > aPic.length-1){
+				n = 0;
+			}
+			arrImg[1].src = aPic[n];
+			textNum[1].innerHTML = aNum[n];
+			console.log(aNum[n]);
+
+			doMove( textNum[0],"bottom",-70,5,function (){
+				doMove( oPicList,"left",-400,20,function (){
+					doMove( textNum[1],"bottom",0,5,function (){
+						oPicList.style.left = 0;
+						textNum[0].style.bottom = 0;
+						textNum[1].style.bottom = "-70px";
+
+						arrImg[0].src = arrImg[1].src;
+						textNum[0].innerHTML = textNum[1].innerHTML;					
+					});
+				});				
+			});
+		},2000 );
+	}
+</script>
+</head>
+<body>
+	<section class="wrap">
+		<ul id="picList">
+			<li>
+				<img src="i/1.jpg" />
+				<p>1</p>
+			</li>
+			<li>
+				<img src="i/2.jpg" />
+				<p>2</p>
+			</li>
+		</ul>
+	</section>
+</body>
+</html>
