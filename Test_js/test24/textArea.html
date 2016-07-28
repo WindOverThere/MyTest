@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body,p,input{margin:0;padding:0; font:20px/30px "微软雅黑";}
+	.wrap{width: 1000px; height: 500px;  margin:10px auto;}
+	textarea{width: 330px; height: 400px; float:left; border:1px solid #000; font-size: 20px; background: #ddd; padding:10px; resize: none; }
+	#center{width: 200px; height: 400px;float:left; position: relative;}
+	#center a{position:absolute; left:0; top:0; width: 180px; height: 50px; background: red; margin:0 10px; text-decoration:none;text-align: center;line-height: 50px; color: #fff;}
+	#center p{width: 200px; height: 50px; text-align: center; line-height: 50px; position: absolute;left:0;top:50px;}
+	#center div{width: 185px; padding-left:15px; height: 20px; position: absolute;left:0;top:100px; opacity: 0; transition: 1s;}
+	#center em{float:left; width: 15px; height: 20px; margin-left:5px;background: red;}
+	#text{width: 350px; padding: 5px; height: 400px;float: left; border:1px solid #000; word-wrap: break-word;}
+</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	window.onload = function () {
+		var center = $("#center");
+		var toRight = $("a",center)[0];
+		var redBlueDiv = $("div",center)[0];
+		var textInp = $("textarea")[0];
+		var aWordNum = $("span");
+		var toText = $("#text");
+		var aPoint = $("em");
+
+		var str = "";
+		var n = 0;
+		var m = 0;
+		var timer = null;
+		var onOff = true;
+
+		toRight.onclick = function (){
+			if(timer) return;
+
+			str = textInp.value;
+			
+			if(textInp.value != ""){
+				toText.innerHTML = "";
+				aWordNum[1].innerHTML = str.length;
+			}
+
+			timer = setInterval( function (){
+				redBlueDiv.style.opacity ="1";
+				toText.innerHTML += str.substring(n,n+1);
+				textInp.value = str.substring(n);
+				n++;
+
+				if(textInp.value == ""){
+					clearInterval(timer);
+					redBlueDiv.style.opacity ="0";
+					timer = null;
+				};
+				aWordNum[0].innerHTML = toText.innerHTML.length;
+
+				m++;
+				for (var i = 0; i < aPoint.length; i++) {
+					aPoint[i].style.background = "";
+				}
+				
+				if(m >= aPoint.length){
+					m=0;
+				}
+				aPoint[m].style.background = "blue";
+			},100)
+			n = 0;
+
+		}
+	}
+</script>
+</head>
+<body>
+	<section class="wrap">
+		<textarea></textarea>
+		<div id="center">
+			<a href="javascript:;">把文字右移</a>
+			<p><span>0</span> / <span>0</span></p>
+			<div>
+				<em></em>
+				<em></em>
+				<em></em>
+				<em></em>
+				<em></em>
+				<em></em>
+				<em></em>
+				<em></em>
+			</div>
+		</div>
+		<p id="text"></p>
+	</section>
+</body>
+</html>
