@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body,ul,p,input{margin:0; padding:0; font: 20px "微软雅黑";}
+	a{text-decoration:none;}
+	body{background: #666;}
+	.wrap{width: 800px; height: 600px; background: #ccc; margin:20px auto;position: relative;}
+	#text{width: 600px; height: 300px;background: #fff;position: absolute; left:30px; top:50px; line-height: 36px; padding:10px;}
+	article{width:100px; height: 50px;position: absolute;right:20px; top:50px; line-height: 50px; text-align: center;}
+	article a{position: absolute; left:0; top:0; width: 100px; height: 50px; background: #94948c; color: #fff;}
+	article div{position: absolute;left:0; bottom:-115px; width: 100px;display: none;}
+	article div span{float:left;width: 100px; background: #c0c0c0; margin-bottom: 5px;cursor: pointer;}
+	.alertWrap{width: 570px; height: 110px; border:10px solid #e71063; position: absolute; left:30px; bottom:30px; padding:25px; -display: none;background: #e7e7b5;}
+	nav{width: 570px; height:40px; border-bottom: 2px solid #e73100;}
+	nav a{float:left; width: 100px; height:40px; line-height:40px; color: #000; text-align: center;}
+	.alertWrap div{ height: 40px; padding:25px 0; display: none;}
+	.alertWrap strong{position: absolute; right:15px; top:5px; width: 10px; height: 10px; cursor: pointer;}
+</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	window.onload = function (){
+		var oColumn = $("#column");
+		var aUnfold = $("a",oColumn)[0];//展开按钮
+		var aSRWrap = $("div",oColumn)[0];//展开下面的 查找/替换 div
+		var onOff = true; //开关
+
+		aUnfold.onclick = function (){
+			if (onOff) {
+				aSRWrap.style.display = "block";
+				onOff = false;
+			} else {
+				aSRWrap.style.display = "none";
+				onOff = true;
+			}
+			console.log(onOff);
+		};
+		var aSearPreBtn = $("span",oColumn);//右侧查找和替换按钮span
+		var oAlertSR = $("#alertSR");//弹出框
+		var btmaSearPreBtn = $("a",oAlertSR); //弹出框查找替换选项按钮a
+		var searPreWrap = $("div",oAlertSR); //弹框里的 查找替换 的输入input--集合
+		var closeBtn = $("strong",oAlertSR)[0];
+
+		//查找替换按钮的 鼠标移入移出
+		for (var i = 0; i < aSearPreBtn.length; i++) {
+			aSearPreBtn[i].index = i;
+			aSearPreBtn[i].onmouseover = function (){
+				for (var i = 0; i < aSearPreBtn.length; i++) {
+					aSearPreBtn[i].style.cssText = "";
+				}
+				this.style.cssText = "background:#e76308; color:#fff;";
+			};
+			aSearPreBtn[i].onclick = function (){
+				for (var i = 0; i < searPreWrap.length; i++) {
+					searPreWrap[i].style.display = "none";
+					btmaSearPreBtn[i].style.cssText = "";
+				}
+				oAlertSR.style.display = "block"
+				searPreWrap[this.index].style.display = "block";
+				btmaSearPreBtn[this.index].style.cssText = "background:#e73100;color: #fff;"
+				aSRWrap.style.display = "none";
+				onOff= true;
+			};
+
+		};
+		for (var i = 0; i < btmaSearPreBtn.length; i++) {
+			btmaSearPreBtn[i].index = i;
+			btmaSearPreBtn[i].onclick = function (){
+				for (var i = 0; i < btmaSearPreBtn.length; i++) {
+					searPreWrap[i].style.display = "none";
+					btmaSearPreBtn[i].style.cssText = "";
+				}
+				console.log(i);
+				searPreWrap[this.index].style.display = "block";
+				btmaSearPreBtn[this.index].style.cssText = "background:#e73100;color: #fff;"
+			}
+		};
+
+		closeBtn.onclick = function (){   //关闭按钮
+			oAlertSR.style.display = "none"
+		};
+		var oText =$("#text");
+		var searchWrap = $("#search");	//查找 外框
+		var searchInp = $("input",searchWrap);	//input2个
+		var oldText = oText.innerHTML;
+
+		//查找 的操作
+		searchInp[1].onclick = function (){
+			oText.innerHTML = oldText;
+			var str = "";
+			str = searchInp[0].value;
+			if(!str){
+				alert("请输入要查找的内容...");
+				return;
+			};
+			if (oText.innerHTML.indexOf(str) === -1) {
+				alert("没有找到要查找的内容...");
+			};
+			oText.innerHTML = oldText.split(str).join('<mark>'+ str + '</mark>');
+			searchInp[0].value = "";
+		};
+		var replaceWrap = $("#replace");	//替换 外框
+		var replaceInp = $("input",replaceWrap);	//input3个
+
+		//替换 的操作
+		replaceInp[2].onclick = function (){
+			oText.innerHTML = oldText;
+			var str = "";
+			str = replaceInp[0].value;
+			strReplace = replaceInp[1].value;
+			if(!str){
+				alert("请输入要替换的内容...");
+				return;
+			};
+			if (oText.innerHTML.indexOf(str) === -1) {
+				alert("没有找到要替换的内容...");
+			};
+			if (!strReplace) {
+				oText.innerHTML = oldText.split(str).join("");
+				oldText = oldText.split(str).join(strReplace);
+			}else{
+				oText.innerHTML = oldText.split(str).join('<mark> '+ strReplace + '</mark>');
+				oldText = oldText.split(str).join(strReplace);
+			};
+			console.log(oldText);
+			replaceInp[0].value = "";
+			replaceInp[1].value = "";
+		}
+	}
+</script>
+</head>
+<body>
+	<section class="wrap">
+		<p id="text">妙味课堂是北京妙味趣学信息技术有限公司旗下的IT前端培训品牌，妙味课堂是一支独具特色的IT培训团队，妙味反对传统IT教育枯燥乏味的教学模式，妙味提供一种全新的快乐学习方法！目前主要针对的是javascript培训，同时还提供了css教程、javascript视频、js特效等，最新推出了外地学员们喜欢的javascript网络课程服务，同时还为处于javascript入门阶段的朋友录制了大量javascript视频，其中涉及了大量javascript基础知识，希望妙味课堂推出的javascript网络培训课程能带给大家更多惊喜。</p>
+		<article id="column">
+			<a href="javascripe:;">展开</a>
+			<div>
+				<span>查找</span>
+				<span>替换</span>
+			</div>
+		</article>
+		<div id="alertSR" class="alertWrap">
+			<nav>
+				<a style="background: #e73100; color: #fff;" href="javascript:;">查找</a>
+				<a href="javascript:;">替换</a>
+			</nav>
+			<div style="display: block;" id="search ">
+				<input type="input" />
+				<input type="button" value="查找" />
+			</div>
+			<div id="replace">
+				<input type="input" />
+				<input type="input" />
+				<input type="button" value="替换" />
+			</div>
+			<strong>X</strong>
+		</div>
+	</section>
+</body>
+</html>

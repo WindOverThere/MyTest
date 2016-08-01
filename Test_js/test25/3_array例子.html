@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	div{width: 50px; height: 50px; background: #ccc; color: #fff; float:left; margin-left: 10px; font-size: 30px; text-align: center; line-height: 50px;}
+	input{margin-left: 100px;}
+</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	window.onload = function (){
+		var arr = [1,2,3,4,5];
+		var aDiv = $("div");
+		var aInp = $("input");
+
+		//arr.shift();	//删除第一个
+		//arr.pop();	//删除最后一个
+		//arr.unshift(0); //向前面添加
+		//arr.push(0); //向后追加
+
+		for (var i = 0; i < arr.length; i++) {
+			aDiv[i].innerHTML = arr[i];
+		}
+		aInp[0].onclick = function (){
+			arr.unshift(arr.pop());
+			for (var i = 0; i < arr.length; i++) {
+				aDiv[i].innerHTML = arr[i];
+			}
+		}
+		aInp[1].onclick = function (){
+			arr.push(arr.shift());
+			for (var i = 0; i < arr.length; i++) {
+				aDiv[i].innerHTML = arr[i];
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="向前">
+	<input type="button" value="向后">
+	<hr />
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>
