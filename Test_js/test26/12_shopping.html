@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+
+	var arr = [{
+		name:"cpu",
+		price:"1000",
+		intro:"蹬蹬蹬......",
+		relProduct:["主板","显示器"],
+	},{
+		name:"显卡",
+		price:"500",
+		intro:"蹬蹬蹬......",
+		relProduct:["主板","显示器"],
+	},{
+		name:"键鼠",
+		price:"233",
+		intro:"蹬蹬蹬......",
+		relProduct:["显卡","显示器","电源"],
+	},{
+		name:"音箱",
+		price:"100",
+		intro:"咚咚咚......",
+		relProduct:["主板","显示器","硬盘","摄像头"],
+	},
+	];
+
+	window.onload = function (){
+		var listUl = document.getElementById('list');
+		var str = "";
+
+		for (var i = 0; i < arr.length; i++) {
+			str += "<li>";
+
+			str += '<p>'+ arr[i].name +'</p><p>'+ arr[i].price + '元</p><p>简介：' + arr[i].intro + '</p>';
+
+			if(arr[i].relProduct){
+				str += "<p>相关产品："
+				for (var j = 0; j < arr[i].relProduct.length; j++) {
+					str += "<a href='#'>"+arr[i].relProduct[j]+"</a> "
+				}
+				str += "</p>"
+			}
+
+			str += "</li>";
+		}
+		listUl.innerHTML = str;
+	}
+</script>
+</head>
+<body>
+	<ul id="list">
+<!-- 		<li>
+	<p>CPU</p>
+	<p>1999元</p>
+	<p>简介：蹬蹬蹬......</p>
+	<p>相关产品：
+		<a href="#">主板</a>
+		<a href="#">显示器</a>
+	</p>
+</li>
+<li>
+<li>
+	<p>CPU</p>
+	<p>1999元</p>
+	<p>简介：蹬蹬蹬......</p>
+	<p>相关产品：
+		<a href="#">主板</a>
+		<a href="#">显示器</a>
+	</p>
+</li>
+	<p>CPU</p>
+	<p>1999元</p>
+	<p>简介：蹬蹬蹬......</p>
+	<p>相关产品：
+		<a href="#">主板</a>
+		<a href="#">显示器</a>
+	</p>
+</li>
+<li>
+	<p>CPU</p>
+	<p>1999元</p>
+	<p>简介：蹬蹬蹬......</p>
+	<p>相关产品：
+		<a href="#">主板</a>
+		<a href="#">显示器</a>
+	</p>
+</li> -->
+	</ul>
+</body>
+</html>

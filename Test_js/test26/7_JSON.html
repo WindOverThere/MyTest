@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+
+	var abc = '{ "title" : "洗发水" }';
+
+/*	console.log(typeof JSON.parse(abc));
+	//JSON.parse(abc)
+	console.log(typeof abc);*/
+
+	var obj = JSON.parse( abc,function ( key,value ){
+/*		if(key === "title"){
+			value = "123";
+		}*/
+		return value;
+	} )
+	console.log(obj);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

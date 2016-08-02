@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+
+	var json = {aaa:"111", bbb:"222", ccc:["333","888"], ddd:"444"};
+
+	window.onload = function (){
+		var listUl = document.getElementById('list');
+		var html = "";
+
+		html = "<li>"+ json.aaa +"</li><li>";
+
+		for (var i = 0; i < json.ccc.length; i++) {
+			html += '<a href="#">' + json.ccc[i] + '</a>' + " ";
+		};
+
+		html += "</li><li>" + json.bbb + "</li><li>" + json.ddd + "</li>"
+
+		listUl.innerHTML = html;
+	};
+
+</script>
+</head>
+<body>
+	<ul id="list">
+<!-- 		<li class="aaa">1</li>
+<li class="ccc"><a href="#">3</a><a href="#">8</a></li>
+<li class="bbb">2</li>
+<li class="ddd">4</li> -->
+	</ul>
+</body>
+</html>
