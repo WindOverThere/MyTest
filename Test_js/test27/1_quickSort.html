@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	var arr = [2,3,7,8,1,9,10,4,6,5];
+
+/*	var num = Math.floor(arr.length/2);	
+	middleValue =  arr.splice( num,1 )[0];
+	//console.log(num);
+	console.log(middleValue);
+	console.log(arr.splice( num,1 )[0]);*/
+
+	function quickSort( optionArr ){
+		if( optionArr.length <= 1 ){
+			return optionArr;
+		};
+
+		var num = Math.floor(optionArr.length/2);	
+		var middleValue =  optionArr.splice( num,1 )[0]; //数组中间的数字
+
+		var left = [];
+		var right = [];
+
+		for (var i = 0; i < optionArr.length; i++) {
+			if( optionArr[i] < middleValue ){
+				left.push( optionArr[i] ); //如果小于中间数放进left
+			}else{
+				right.push( optionArr[i] ); //如果小于中间数放进right
+			}
+		}
+		return quickSort(left).concat( middleValue,quickSort(right) );
+	}
+
+	console.log( quickSort(arr) );
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

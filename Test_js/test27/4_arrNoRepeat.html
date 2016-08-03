@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	var arr = [2,3,"a","2","1",5,3,1,"a",2,3];
+ 	var obj = {};	
+ 	var newArr = [];
+ 	for (var i = 0; i < arr.length; i++) {
+ 		var t = ( typeof arr[i] ) + arr[i]; //把对应的值前加上type
+ 		//console.log( t );
+ 		
+ 		if( !obj[t] ){ //key值不存在，取反为true
+ 			obj[t] = true;	
+ 			newArr.push( arr[i] );
+ 		}
+ 		
+ 	}
+ 	console.log( newArr );
+</script>
+</head>
+<body>
+
+</body>
+</html>

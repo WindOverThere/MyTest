@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+    h1,h2,h3{font-size: 12px;}
+/*     section{width: 1000px; height: 500px; background: #666;padding: 5px;}
+.title{width: 100px;height: 20px; background: #fff; margin:5px;} */
+</style>
+<script src="comm.js"></script>
+<script>
+    window.onload = function(){
+        var arr = [
+            {
+                title : "第一级菜单",
+                child : [
+                    {title:"第二级菜单",
+                    },
+                    {title:"第二级菜单",
+                        child:[
+                            {title:"第三级菜单"},
+                            {title:"第三级菜单"},
+                            {title:"第三级菜单"}
+                        ]
+                    },
+                    {title:"第二级菜单",
+                        child:[
+                            {title:"第三级菜单"},
+                            {title:"第三级菜单"}
+                        ]
+                    }
+                ]
+            },
+            {
+                title : "第一级菜单",
+                child : [
+                    {title:"第二级菜单"},
+                    {title:"第二级菜单",
+                        child:[
+                            {title:"第三级菜单"},
+                            {title:"第三级菜单"},
+                            {title:"第三级菜单"}
+                        ]
+                    },
+                    {
+                    title:"第二级菜单",
+                        child:[
+                            {title:"第三级菜单"},
+                            {title:"第三级菜单"}
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        var bigMenu = $("#bigMenu");
+        var str = "";
+
+        for (var i = 0; i < arr.length; i++) {
+            str += '<li class="menu1">';
+
+            str += '<h1>'+ arr[i].title +'</h1>';
+            for (var j = 0; j < arr[i].child.length; j++) {
+                str += '<ul><li>';
+
+                str += '<h2 class="title">'+ arr[i].child[j].title +'</h2>';
+
+                if(arr[i].child[j].child){
+                    str += '<ul><li class="title">';
+
+                    for (var m = 0; m < arr[i].child[j].child.length; m++) {
+                        str += '<h3>'+arr[i].child[j].child[m].title+'</h3>';
+                    }
+                    str += '</li></ul>';
+                }
+                str += '</li></ul>';
+            }
+            str += '</li>';
+        }
+        bigMenu.innerHTML = str;
+    }
+</script>
+</head>
+<body>
+    <section>
+        <ul id="bigMenu"><!-- 
+            <li class="menu1">
+                <h1>第一级菜单</h1>
+                <ul>
+                    <li>
+                        <h2 class="title">第二级菜单</h2>
+                         <ul>
+                            <li class="title">
+                                <h3>第三级菜单</h3>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <h2 class="title">第二级菜单</h2>
+                         <ul>
+                            <li class="title">
+                                <h3>第三级菜单</h3>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li> -->
+        </ul>
+    </section>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	var arr = [2,3,7,8,1,9,10,4,6,5];
+
+	function bubbleSort( optionArr ){
+		for (var i = optionArr.length; i > -1; i--) {
+		
+			for (var j = optionArr.length; j > -1; j--) {
+				if ( optionArr[j] < optionArr[j+1] ) {
+					var c = optionArr[j];
+					optionArr[j] = optionArr[j+1];
+					optionArr[j+1] = c;
+				};
+			};
+		};
+		console.log( optionArr );
+	}
+	bubbleSort(arr);
+	
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
