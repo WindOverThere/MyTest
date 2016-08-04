@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	#time{font-size: 50px;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var oTime = document.getElementById('time');
+		oTime.onclick = function (){
+			alert(123);
+		}
+		function fnTime(){
+			var time = new Date();
+			var hours = time.getHours();
+			var minutes = time.getMinutes();
+			var seconds = time.getSeconds();
+			var str = "";
+			oTime.innerHTML = toTwo(hours) + toTwo(minutes) + toTwo(seconds);
+		};
+		setInterval(fnTime,1000);
+		fnTime();
+	}
+	function toTwo( n ){
+		return n < 10 ? '0' + n : '' + n ;
+	};
+</script>
+</head>
+<body>
+	<p id="time">
+		<img src="image/">
+	</p>
+</body>
+</html>

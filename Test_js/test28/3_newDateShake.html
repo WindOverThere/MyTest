@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body{font-size: 50px;}
+	img{width: 100px; position: relative;left:0;top:0;}
+</style>
+<script src="getStyle.js"></script>
+<script src = "Shake.js"></script>
+<script type="text/javascript">
+		function addZero(n){
+			return  n < 10 ? "0" + n : n ;
+		};	
+	function fnTime(){
+		var time = new Date();
+
+		var hours = time.getHours();
+		var minutes = time.getMinutes();
+		var seconds = time.getSeconds();
+
+		var str = addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
+		return str;
+	};
+	window.onload = function (){  
+		var aImg = document.getElementsByTagName('img');
+		var curTime = "";
+
+		seTimes();
+		setInterval( function (){
+			seTimes();
+		},1000 )
+
+		function seTimes(){
+			var times = fnTime();
+			var onOff = true;
+
+			for (var i = 0; i < times.length; i++) {
+				if( times.charAt(i) === ":" ){
+					aImg[i].src = "image/fuh.png";
+				}else{
+					aImg[i].src = "image/"+times.charAt(i)+".png"
+					if( times.charAt(i) != curTime.charAt(i) ){
+						fnShake(aImg[i],"top",30);
+					}
+				}
+			};
+			curTime = times;
+		}
+	}
+</script>
+</head>
+<body>
+	<img src="image/0.png" />
+	<img src="image/0.png" />
+	<img src="image/fuh.png" />
+	<img src="image/0.png" />
+	<img src="image/0.png" />
+	<img src="image/fuh.png" />
+	<img src="image/0.png" />
+	<img src="image/0.png" />
+</body>
+</html>

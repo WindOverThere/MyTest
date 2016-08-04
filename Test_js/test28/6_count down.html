@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	body{
+		font-size: 50px;
+	}
+</style>
+<script type="text/javascript">
+	var fututerTime = new Date( 2016,0,31,16,16,0 ); //2016年1月30日11点30分00秒
+	function addZero(n){
+		return  n < 10 ? "0" + n : n ;
+	};
+
+	window.onload = function (){
+		function countDown(){
+			var nowTime = new Date();
+			var t = (fututerTime.getTime() - nowTime.getTime()) / 1000;
+
+			if ( t < 0 ) {
+				alert("时间已经到了");
+				return;
+			};
+
+			var D = addZero(Math.floor(t/86400));
+			var H = addZero(Math.floor(t%86400/3600));
+			var M = addZero(Math.floor(t%86400%3600/60));
+			var S = addZero(Math.floor(t%60));
+
+			var str = "还剩下："+ D +"天"+ H +"小时"+ M +"分"+ S +"秒";
+			document.body.innerHTML = str;
+		};
+		countDown();
+
+		setInterval( function (){
+			countDown();
+		},1000 )
+
+	};
+
+</script>
+<body>
+	
+</body>
+</html>
