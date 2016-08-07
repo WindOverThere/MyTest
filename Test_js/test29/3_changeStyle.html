@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	body,h2,p,input,ul{padding:0; margin:0; font:16px "微软雅黑";}
+	input{outline: none; cursor:pointer;}
+	li{list-style: none;}
+	.wrap{width: 600px; height:500px; background: #ccc; padding:10px; margin:10px auto; position: relative;}
+	nav{height: 30px; line-height: 30px;}
+	h2{float:left;width: 200px;}
+	nav input{float:left; width: 100px;line-height: 30px;}
+	#isDiv{width: 100px; height: 100px; background: red;}
+	#alertWrap{position: absolute; right:20px; top:250px; width: 300px; height: 200px;border:20px solid #f1f1f1; background: #fff; padding:5px; display: none;}
+	#alertWrap li{height: 30px;padding:5px 0;}
+	#alertWrap li input{height: 30px; width: 50px;float: left; margin-left: 5px;}
+	#alertWrap li p{height: 30px; width: 130px;float: left; line-height: 30px;}
+	#alertWrap div{padding:20px 0 0 100px;}
+	#alertWrap div input{width: 60px; height: 40px; background: #878542;color: #fff;}
+	#mask{background: #000; width: 100%; height: 100%; position: absolute;left:0; top:0;opacity: .4; display: none;}
+</style>
+<script type="text/javascript">
+	window.onload = function () {
+		var oSetBtn = document.getElementsByTagName('nav')[0];
+		var oAlert = document.getElementById('alertWrap');
+		var oMask = document.getElementById('mask');
+		var oDiv = document.getElementById('isDiv');
+
+		oSetBtn.onclick = function (){
+			oAlert.style.display = "block";
+			oMask.style.display = "block";
+		};
+		var aColorLi = document.getElementsByTagName('li')[0];
+		var aColorBtn = aColorLi.getElementsByTagName('input');
+
+		aColorBtn[0].onclick =  function (){
+			oDiv.style.background = "red";
+		};
+		aColorBtn[1].onclick =  function (){
+			oDiv.style.background = "yellow";
+		};
+		aColorBtn[2].onclick =  function (){
+			oDiv.style.background = "blue";
+		};
+		var aWidthLi = document.getElementsByTagName('li')[1];
+		var aWidthBtn = aWidthLi.getElementsByTagName('input');
+
+		aWidthBtn[0].onclick =  function (){
+			oDiv.style.width = "200px";
+		};
+		aWidthBtn[1].onclick =  function (){
+			oDiv.style.width = "300px";
+		};
+		aWidthBtn[2].onclick =  function (){
+			oDiv.style.width = "400px";
+		};
+		var aHeightLi = document.getElementsByTagName('li')[2];
+		var aHeightBtn = aHeightLi.getElementsByTagName('input');
+
+		aHeightBtn[0].onclick =  function (){
+			oDiv.style.height = "200px";
+		};
+		aHeightBtn[1].onclick =  function (){
+			oDiv.style.height = "300px";
+		};
+		aHeightBtn[2].onclick =  function (){
+			oDiv.style.height = "400px";
+		};
+
+		var recover = document.getElementById('recover');
+		var oconfirm = document.getElementById('confirm');
+
+		recover.onclick = function (){
+			oAlert.style.display = "none";
+			oMask.style.display = "none";
+			oDiv.style.cssText = "width:100px; height:100px;"
+		};
+		oconfirm.onclick = function (){
+			oAlert.style.display = "none";
+			oMask.style.display = "none";
+		}
+	}
+</script>
+<body>
+<section class="wrap">
+	<section>
+		<nav>
+			<h2>请为下面的DIV设置样式：</h2>
+			<input type="button" value="点击设置" />
+		</nav>
+		<div id="isDiv"></div>
+	</section>
+	<p id="mask"></p>
+	<section id="alertWrap">
+		<ul>
+			<li>
+				<p>请选择背景颜色：</p>
+				<input type="button" value="红" />
+				<input type="button" value="黄" />
+				<input type="button" value="蓝" />
+			</li>
+			<li>
+				<p>请选择宽(px)：</p>
+				<input type="button" value="200" />
+				<input type="button" value="300" />
+				<input type="button" value="400" />
+			</li>
+			<li>
+				<p>请选择高(px)：</p>
+				<input type="button" value="200" />
+				<input type="button" value="300" />
+				<input type="button" value="400" />
+			</li>
+		</ul>
+		<div>
+			<input id="recover" type="button" value="恢复" />
+			<input id="confirm" type="button" value="确定" />			
+		</div>
+	</section>
+</section>
+</body>
+</html>

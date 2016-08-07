@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	#div1{background: red;width: 100px; height: 200px;}
+</style>
+<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementById('div1');
+		oDiv.onmouseover = function (){
+			oDiv.style.cssText = "width:200px; height:400px; background:blue;"
+		}
+		oDiv.onmouseout = function (){
+			oDiv.style.cssText = "width:100px; height:200px; background:red;"
+		}
+	}
+</script>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

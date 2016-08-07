@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	#tip{
+		width: 200px;
+		height: 400px;
+		background: #ccc;
+		display: none;
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var oBtn = document.getElementById('load');
+		var oDiv = document.getElementById('tip');
+		oBtn.onmouseover = function (){
+			setTimeout( function (){
+				oDiv.style.display = "block";
+			},500)
+		}
+		oBtn.onmouseout = function (){
+			oDiv.style.display = "none";
+		}
+	}
+
+</script>
+<body>
+	<input id="load" type="button" value="登录" />
+	<div id="tip">为了你的信息安全...</div>
+</body>
+</html>

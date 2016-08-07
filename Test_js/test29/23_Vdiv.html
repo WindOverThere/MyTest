@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	#divWrap{position:relative;}
+	#divWrap div{width: 50px; height: 50px; background: red; position: absolute;left:0; right:0;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var oBtn = document.getElementById('btn');
+		var divWrap = document.getElementById('divWrap');
+		var aColor = ["red","yellow","green","blue",];
+		var str = "";
+
+		oBtn.onclick = function (){
+			for (var i = 0; i < 5; i++) {
+				var l = 0;
+				var t = 0;
+
+				l = ( i % 10 )*55;
+				if ( i <= 2) {
+					t = i * 55;
+				} else {
+					t = ( 4-i )*55;
+				};
+
+				str += '<div style="background:'+ aColor[i%4] +';left:'+ l +'px;top:'+ t +'px;"></div>';
+			}
+			divWrap.innerHTML = str;
+		};
+	};
+</script>
+<body>
+	<input id="btn" type="button" value="生成10个div" />
+	<hr />
+	<div id="divWrap">
+		
+	</div>
+</body>
+</html>

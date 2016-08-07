@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var arr = ["1111111111111","222222222222","33333333333333","4444444444","55555555555555",];
+		var aBtn = document.getElementsByTagName('input')[0];
+		var oUl = document.getElementById('list');
+		var onOff = true;
+		aBtn.onclick = function (){
+			//oUl.innerHTML = "";
+			if (onOff) {
+				//onOff = false;
+				for (var i = 0; i < arr.length; i++) {
+					oUl.innerHTML += '<li>'+arr[i]+'</li>';
+					onOff = false;
+				}
+				//onOff = false;
+			};
+		};
+	}
+</script>
+<body>
+	<input type="button" value="点击" />
+	<ul id="list"></ul>
+</body>
+</html>

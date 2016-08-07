@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+	window.onload = function (){
+		var oText = document.getElementById('text');
+		var oBtn = document.getElementById('clickBtn');
+		var oP = document.getElementsByTagName('p')[0];
+		oBtn.onclick = function (){
+			oP.innerHTML = oText.value;
+		}
+	}
+</script>
+<body>
+	<input id="text" type="text" />
+	<input id="clickBtn" type="button" value="点击">
+	<p style="width: 500px; height: 30px; background: #ccc;"></p>
+</body>
+</html>

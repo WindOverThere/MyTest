@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+	window.onload = function (){
+		var aBtn = document.getElementsByTagName('input');
+		var aP = document.getElementsByTagName('p')[0];
+		var n = 14;
+		aBtn[1].onclick = function (){
+			n = n + 2;
+			aP.style.fontSize = n + "px";
+		}
+		aBtn[0].onclick = function (){
+			n = n - 2;
+			aP.style.fontSize = n + "px";
+		}
+	}
+</script>
+<body>
+	<input type="button" value="-">
+	<input type="button" value="+">
+	<p>这是一段文字这是一段文字这是一段文字这是一段文字</p>
+</body>
+</html>

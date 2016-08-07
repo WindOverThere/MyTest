@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	div{width: 50px; height: 50px; background: red; position: absolute;left:0;top:0; font-size:30px; text-align: center; line-height: 50px; color: #fff;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var aDiv = document.getElementsByTagName('div');
+		for (var i = 0; i < 10; i++) {
+			document.body.innerHTML += '<div style="left:'+ i*60 +'px;top:'+i*50+'px;">' + i + '</div>';
+		}
+	}
+</script>
+<body>
+</body>
+</html>

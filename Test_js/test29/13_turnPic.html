@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	body{margin:0;padding:0;font: bold 20px "微软雅黑"; text-align: center;}
+	a{text-decoration:none;vertical-align:top;}
+	section{width: 440px; height: 652px; border:5px solid #000; margin:10px auto;position: relative;}
+	#page{width: 100%; height: 30px; line-height: 30px; position: absolute;left:0;top:0;background: #000;opacity: .6;color:
+		#fff;}
+	a{width: 100px; height: 50px; background: #000;opacity:.6;position: absolute; color: #fff;}
+	#pgup{left:0; top:220px;}
+	#pgdn{right:0; top:220px;}
+</style>
+<script type="text/javascript">
+	window.onload = function (){
+		var arr = ["image/1.jpg","image/2.jpg","image/3.jpg","image/4.jpg","image/5.jpg",]
+		var oImg = document.getElementsByTagName('img')[0];
+		var oPgup = document.getElementById('pgup');
+		var oPgdn = document.getElementById('pgdn');
+		var pageNum = document.getElementById('page');
+		var btnInp = document.getElementsByTagName('input');
+		var n = 0;
+		var onOff = true;
+		btnInp[1].onclick =function (){
+			onOff = true;
+			console.log(onOff);
+		}
+		btnInp[0].onclick =function (){
+			onOff = false;
+			console.log(onOff);
+		}
+		oPgdn.onclick = function (){
+			n++;
+			if (n == arr.length) {
+				if (onOff) {
+					n = 0;
+				} else {
+					alert("已经是最后一张了")
+					n = arr.length-1;
+				}
+			}
+			oImg.src = arr[n];
+			pageNum.innerHTML = ""+(n+1)+"/"+ arr.length +"";
+		};
+		oPgup.onclick = function (){
+			n--;
+			if (n == -1) {
+				if(onOff){
+					n = arr.length-1;
+				}else{
+					alert("已经是第一张了")
+					n = 0;
+				}
+			}
+			oImg.src = arr[n];
+			pageNum.innerHTML = ""+(n+1)+"/"+ arr.length +"";
+		};
+	}
+</script>
+<body>
+	<input type="button" value="顺序切换" />
+	<input type="button" value="循环切换" />	
+	<section>
+		<img src="image/1.jpg" />
+		<span id="page">1/4</span>	
+		<a id="pgup" href="javascript:;">上一张</a>
+		<a id="pgdn" href="javascript:;">下一张</a>
+	</section>
+</body>
+</html>
