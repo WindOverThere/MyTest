@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	li{list-style:none; font-size: 60px; float:left; cursor: pointer;}
+</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	window.onload = function (){
+		var oLilst = $("#list");
+		var aStar = $("li",oLilst);
+		var onOff = true;
+		var n = 0;
+
+		function lr(a){
+			for (var i = 0; i < aStar.length; i++) {
+				if ( i<=a ) {//左
+					if ( a <= 1 ) {
+						aStar[i].style.color = "gray";
+					} else {
+						aStar[i].style.color = "red";
+					}
+				}else{//右
+					aStar[i].style.color = "";
+				}
+			}
+		}
+
+		for (var i = 0; i < aStar.length; i++) {
+			aStar[i].index = i;
+			aStar[i].onmouseover = function (){
+				lr(this.index);
+			};
+			aStar[i].onmouseout = function (){
+				if (onOff) {
+					for (var i = 0; i < aStar.length; i++) {
+						aStar[i].style.color = "";
+					};
+				} else {
+					lr(n);
+				};
+
+			};
+			aStar[i].onclick = function (){
+				onOff = false;
+				n = this.index;
+			};
+		};
+	};
+</script>
+<body>
+	<ul id="list">
+		<li>&star;</li>
+		<li>&star;</li>
+		<li>&star;</li>
+		<li>&star;</li>
+		<li>&star;</li>
+	</ul>
+</body>
+</html>

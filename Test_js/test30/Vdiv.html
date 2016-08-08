@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	#wrap{position:relative; width:300px; height:300px; padding:5px; border:2px solid #000;}
+	div{
+		width:50px;
+		height:50px;
+		background:red;
+		position: absolute;
+		left:0;
+		top:0;
+	}
+</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	window.onload = function (){
+		var oBtn = $("#btn");
+		var oWrap = $("#wrap");
+		var str = "";
+		var n = 1;
+		oBtn.onclick = function (){
+			
+			var l = "";
+			var t = "";
+
+			if( n == 1 ){//向下
+				for (var i = 0; i < 5; i++) {
+					l = ( i%5 )*50;
+					if ( i<=2 ) {
+						t = ( i%5 )*50;
+					} else {
+						t = ( (4-i)%5 )*50;
+					};
+					str += '<div style="left:'+l+'px; top:'+t+'px;"></div>';
+				};
+				n = 2;
+			}else if( n == 2){//向右
+				for (var i = 0; i < 5; i++) {
+					t = ( i%5 )*50;
+					if ( i<=2 ) {
+						l = ( i%5 )*50;
+					} else {
+						l = ( (4-i)%5 )*50;
+					};
+					str += '<div style="left:'+l+'px; top:'+t+'px;"></div>';
+				};
+				n = 3;
+			}else if( n == 3){//向下
+				for (var i = 0; i < 5; i++) {
+					t = ( i%5 )*50;
+					if ( i<=2 ) {
+						l = ( (4-i)%5 )*50 - 100;
+					} else {
+						l = ( i%5 )*50 - 100;
+					};
+					str += '<div style="left:'+l+'px; top:'+t+'px;"></div>';
+				};
+				n = 4;
+			}else{//向上
+				for (var i = 0; i < 5; i++) {
+					l = ( i%5 )*50;
+					if ( i<=2 ) {
+						t = ( (4-i)%5 )*50 - 100;
+					} else {
+						t = ( i%5 )*50 - 100;
+					};
+					str += '<div style="left:'+l+'px; top:'+t+'px;"></div>';
+				};
+				n = 1;
+			};
+			oWrap.innerHTML = str;
+			str = "";
+		};
+	};
+</script>
+<body>
+	<input id="btn" type="button" value="div生成V字" style="width: 200px; height:50px;" />
+	<section id="wrap"></section>
+</body>
+</html>
