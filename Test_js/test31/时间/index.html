@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			body{
+				background: #232323; color: #fff; font-family: "微软雅黑"}
+			img{
+				width: 150px;
+				height: 210px;
+				border: none;
+				vertical-align: top;
+			}
+			.box{
+				width: 1200px;
+				height: 210px;
+				margin: 100px auto;
+			}
+			ul li{
+				list-style: none;
+				vertical-align: top;
+				width: 150px;
+				height: 210px;
+				overflow: hidden;
+				float: left;
+				position: relative;
+			}
+			ul li p{
+				width: 150px;
+				height: 420px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	function addZero(n){
+		return  n < 10 ? "0" + n : n ;
+	};
+	function fnTime(){
+		var time = new Date();
+		var hours = time.getHours();
+		var minutes = time.getMinutes();
+		var seconds = time.getSeconds();
+		var str = addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
+		return str;
+	};
+	window.onload = function (){
+		var aP = $("p");
+		var times = fnTime();
+
+		for(var i=0; i<times.length; i++){
+			var aImg = $("img",aP[i]);
+
+			if( times.charAt(i) !== ':' ){
+				aImg[0].src = 'img/'+times.charAt(i)+'.png';
+			}
+		};
+		var curTimes = fnTime();
+
+		setInterval(function(){
+			var times = fnTime();
+
+			for(var i = 0; i < times.length; i++){
+				var aImg = $("img",aP[i]);
+				if( times.charAt(i) !== ':' ){
+					aImg[1].src = 'img/' + times.charAt(i) + '.png';
+					if( curTimes.charAt(i) !== times.charAt(i) ){
+						aP[i].style.transition = "0.5s";
+						aP[i].style.top = "-210px";
+					}
+				}
+			}
+			curTimes = times;
+		},1000)
+
+		for(var i=0; i<aP.length; i++){
+			aP[i].addEventListener('webkitTransitionEnd',function(){
+				var aImg = $("img",this);
+				this.style.transition = "0s";
+				this.style.top = "0";
+				aImg[0].src = aImg[1].src;
+			})
+		};
+		var onOff = true;
+		var allImg = $("img");
+
+		setInterval( function (){
+			if(onOff){
+				allImg[4].src = "img/nfh.png";
+				allImg[9].src = "img/nfh.png";
+				onOff = false;
+			}else{
+				allImg[4].src = "img/fuh.png";
+				allImg[9].src = "img/fuh.png";
+				onOff = true;
+			}
+		},500);
+	}
+</script>
+	</head>
+	<body>
+		<div class="box">
+			<ul id="list">
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/fuh.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/fuh.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
