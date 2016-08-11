@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+	window.onload = function (){
+		var oUl = document.getElementById('ul1');
+
+		//alert(oUl.childNodes.length);
+		//alert(oUl.childNodes[0].nodeType);
+		//alert(oUl.attributes.length);
+		//alert(oUl.attributes[0].value);
+		//alert(oUl.attributes[0].nodeType);//2 属性节点
+		for (var i = 0; i < oUl.childNodes.length; i++) {
+			if (oUl.childNodes[i].nodeType == 1) {
+				oUl.childNodes[i].style.background = "red";
+			}
+			
+		}
+	}
+</script>
+<body>
+	<ul id="ul1" style="border:1px solid #000">
+		<li>1111111</li>
+		<li>3222222</li>
+		<li>333333</li>
+		<li>444444</li>
+	</ul>
+</body>
+</html>
