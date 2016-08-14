@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+
+	function PersonInfo( name,age ){
+		this.name = name;
+		this.age = age;
+	}
+	PersonInfo.prototype.address = "北京";
+	PersonInfo.prototype.coding = function (){
+			console.log("学习JS中！");
+	}
+	var person1 = new PersonInfo( "aaa",20 );
+	var person2 = new PersonInfo( "bbb",10 );
+
+	console.log( PersonInfo.prototype.__proto__ === Object.prototype );
+
+/*	console.log( person1.address === person2.address );
+
+	console.log( person1.address );
+	console.log( person2.address );*/
+</script> 
+<body>
+	
+</body>
+</html>

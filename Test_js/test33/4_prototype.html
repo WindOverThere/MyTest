@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+
+	function PersonInfo( name,age ){
+		this.name = name;
+		this.age = age;
+		this.address = "北京";
+		this.coding = function (){
+			console.log( "学习JS中!" );
+		};
+	}
+	var person1 = new PersonInfo( "aaa",20 );
+	var person2 = new PersonInfo( "bbb",10 );
+
+	console.log( person1.coding === person2.coding );
+
+	person1.coding();
+	person2.coding();
+</script> 
+<body>
+	
+</body>
+</html>

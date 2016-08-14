@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body,ul{margin:0;padding:0;list-style: none;font:20px "微软雅黑";}
+	a{text-decoration:none;}
+	nav{height: 40px; line-height: 40px;position: absolute; left:0; top:-45px;}
+	nav a{float:left;margin-left: 2px; color: #000; background: #2a7c87;padding:0 5px;}
+	img{border:none; vertical-align: top; width: 400px; height: 600px;display: none;}
+	.wrap{width: 400px; border:5px solid #666; margin:50px auto; padding: 10px;position: relative;}
+	.list li{width: 400px; height: 600px; position: relative;display: none;}
+	.list .picTitle{position:absolute; top:50px;right:-115px;background: #ccc; width: 100px;line-height: 30px;text-align: center;}
+	.list .picTitle span{float:left; width: 100px; height: 30px;}
+</style>
+<script src="comm.js"></script>
+<script type="text/javascript">
+	window.onload = function (){
+		var aMemu = $("a");
+		var oList = $("#list");
+		var aLi = $("li",oList);
+		var n = 0;
+		var m = 0;
+
+		var aPictitle0 = $("span",aLi[0]);
+		var aPic0 = $("img",aLi[0]);
+
+		var aPictitle1 = $("span",aLi[1]);
+		var aPic1 = $("img",aLi[1]);
+		var timer1 = null;
+		var timer2 = null;
+		//菜单1
+		ab();
+		function ab(){
+			timer1 = setInterval(function (){
+				
+				for (var i = 0; i < aPictitle0.length; i++) {
+					aPictitle0[n].style.cssText = "";
+					aPic0[i].style.display = "none";
+				}
+				n++;
+				if( n == aPictitle0.length){
+					clearInterval(timer1);
+					n = 0;
+					m = 0;
+					aLi[0].style.display = "none";
+					aLi[1].style.display = "block";
+					aMemu[0].style.cssText = "background:#2a7c87;coloe:#000;";
+					aMemu[1].style.cssText = "background:#3cabba;color:#fff";
+					//菜单2开始
+					cd();
+					//菜单2结束
+				}
+				aPictitle0[n].style.cssText = "background:red; color:#fff";
+				aPic0[n].style.display = "block";
+			},1000);
+		}
+			//菜单2开始
+		function cd(){
+			clearInterval(timer1);
+			timer2 = setInterval(function (){
+				
+				for (var i = 0; i < aPictitle1.length; i++) {
+					aPictitle1[m].style.cssText = "";
+					aPic1[i].style.display = "none";
+				}
+				m++;
+				if( m == aPictitle1.length){
+					clearInterval(timer2);
+					m = 0;
+					n = 0;
+					aLi[0].style.display = "block";
+					aLi[1].style.display = "none";
+					aMemu[1].style.cssText = "background:#2a7c87;coloe:#000;";
+					aMemu[0].style.cssText = "background:#3cabba;color:#fff";
+					//菜单1开始
+					ab();
+					//菜单1结束
+
+				}
+				aPictitle1[m].style.cssText = "background:red; color:#fff";
+				aPic1[m].style.display = "block";				
+			},1000);
+			//菜单2结束
+		}
+			
+	}
+</script>
+</head>
+<body>
+	<section class="wrap">
+		<nav>
+			<a style="color:#fff;background:#3cabba" href="javascript:;">菜单一</a>
+			<a href="javascript:;">菜单二</a>
+		</nav>
+		<ul class="list" id="list">
+			<li style="display: block;">
+				<div class="pic">
+					<img style="display: block;" src="i/wanted1.jpg">
+					<img src="i/wanted2.jpg">
+					<img src="i/wanted3.jpg">
+				</div>
+				<div class="picTitle">
+					<span style="color: #fff;background: red;">图片1</span>
+					<span>图片2</span>
+					<span>图片3</span>
+				</div>
+			</li>
+			<li>
+				<div class="pic">
+					<img style="display: block;" src="i/wanted4.jpg">
+					<img src="i/wanted5.jpg">
+					<img src="i/wanted6.jpg">
+				</div>
+				<div class="picTitle">
+					<span style="color: #fff;background: red;">图片4</span>
+					<span>图片5</span>
+					<span>图片6</span>					
+				</div>
+			</li>
+		</ul>
+	</section>
+</body>
+</html>
