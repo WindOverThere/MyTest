@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	p {display: none;}
+</style>
+<script type="text/javascript">
+	function Tab( obj ){
+		this.tabBtn = obj.getElementsByTagName("input");	
+		this.tabContent = obj.getElementsByTagName("p");
+		this.len = this.tabBtn.length;
+		this.icur = 0;
+		this.timer = null;
+	};
+	Tab.prototype.init = function () { //初始化
+		var _this = this;
+
+		for (var i = 0; i < this.len; i++) {
+			this.tabBtn[i].index = i;
+			this.tabBtn[i].onclick = function (){
+				for (var i = 0; i < _this.len; i++) {
+					_this.tabBtn[i].style.background = "";
+					_this.tabContent[i].style.display = "none";
+				};
+				this.style.background = "yellow";
+				_this.tabContent[this.index].style.display = "block";
+			}
+		};
+	};
+	Tab.prototype.autoPlay = function (){	//自动播放
+		var _this = this;
+
+		this.timer = setInterval( function (){
+			_this.icur++;
+			if ( _this.icur >= _this.len) {
+				_this.icur = 0;
+			};
+
+			_this.play(_this.icur);
+
+		},500 )
+	};
+	Tab.prototype.play = function (n){ //播放
+		var _this = this;
+		for (var i = 0; i < this.len; i++) {
+			_this.tabBtn[i].style.background = "";
+			_this.tabContent[i].style.display = "none";
+		};
+		this.tabBtn[n].style.background = "yellow";
+		_this.tabContent[n].style.display = "block";
+	};
+	Tab.prototype.stopPlay = function (){//停止播放
+		clearInterval(this.timer);
+		this.timer = null;
+		
+	};
+	Tab.prototype.isStatus = function (){//播放的状态
+		return !!this.timer;
+	};
+
+	window.onload = function (){
+		var tab1 = document.getElementById('div1');
+		var tab2 = document.getElementById('div2');
+
+		var t1 = new Tab( tab1 );
+		var t2 = new Tab( tab2 );
+		t1.init();
+		t2.init();
+
+		var startTwo = document.getElementById('btn1');
+		var stopOne = document.getElementById('btn2');
+		var playBoth = document.getElementById('btn3');
+		var stopBoth = document.getElementById('btn4');
+		var reversePlay = document.getElementById('btn5');
+
+		t1.autoPlay();
+
+		startTwo.onclick = function (){
+			t2.autoPlay();
+		};
+
+		stopOne.onclick = function (){
+			t1.stopPlay();
+		};
+/*		playBoth.onclick = function (){
+			t1.autoPlay();
+			t2.autoPlay();
+		}*/
+		playBoth.onclick = function (){
+			if( !t1.isStatus() ){
+				t1.autoPlay();
+			};
+			if( !t2.isStatus() ){
+				t2.autoPlay();
+			};
+		};
+		stopBoth.onclick = function (){
+			t1.stopPlay();
+			t2.stopPlay();
+		};
+		reversePlay.onclick = function (){
+			if( t1.isStatus() ){
+				t1.stopPlay();
+			}else{
+				t1.autoPlay();
+			};
+
+			if( t2.isStatus() ){
+				t2.stopPlay();
+			}else{
+				t2.autoPlay();
+			}
+		}
+	}
+</script> 
+<body>
+	<div id="div1">
+		<input type="button" value="按钮一" style="background: yellow;" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		<p style="display: block;">内容一</p>
+		<p>内容二</p>
+		<p>内容三</p>
+	</div>
+	
+	<div id="div2">
+		<input type="button" value="按钮一" style="background: yellow;" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		<p style="display: block;">内容一</p>
+		<p>内容二</p>
+		<p>内容三</p>
+	</div>
+	
+	<input type="button" value="开始播放第二个" id="btn1" />
+	<input type="button" value="停止播放第一个" id="btn2" />
+	<input type="button" value="开始播放所有" id="btn3" />
+	<input type="button" value="停止播放所有" id="btn4" />
+	<input type="button" value="反向播放" id="btn5" />
+</body>
+</html>

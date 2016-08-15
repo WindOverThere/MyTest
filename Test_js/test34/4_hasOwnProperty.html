@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+	function Person(){
+		this.names = "aaa"
+	};
+	Person.prototype.address = "北京";
+
+	var per = new Person;
+	//hasOwnProperty
+	//是否是自己的属性
+	console.log( per.hasOwnProperty('names') );
+	console.log( per.hasOwnProperty('address') );
+
+</script> 
+<body>
+	
+</body>
+</html>

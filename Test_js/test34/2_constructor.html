@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+	function Person(){
+
+	};
+	Person.prototype = {
+		//constructor:Person,
+		names: "aaa",
+		say:function (){
+
+		}
+	}
+	console.log( Person.prototype );
+
+	var per = new Person;
+	console.log( per.constructor )
+
+	//console.log( Person.prototype );
+</script>
+<body>
+	
+</body>
+</html>

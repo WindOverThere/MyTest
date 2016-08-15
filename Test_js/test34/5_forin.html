@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+	function Person(){
+		//this.prototype = "2";
+		this.names = "aaa"
+	};
+	Person.prototype.address = "北京";
+
+	var per = new Person;
+
+	for( var attr in per ){
+		
+		if ( per.hasOwnProperty( attr ) ) {
+			console.log( attr );
+		}
+		//console.log( attr )
+	}
+
+</script> 
+<body>
+	
+</body>
+</html>
