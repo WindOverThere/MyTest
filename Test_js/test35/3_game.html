@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>妙味课堂-JS4课练习-游戏：你的鼠标有多快？</title>
+<style>
+body { background:#f1f1f1; font-family:微软雅黑; font-size:16px; user-select: none; }
+#box { width:800px; height:450px; border:1px solid #066; background:#FFF; margin:20px auto 0; position:relative; top:0; left:0; }
+#fraction { width:130px; border:1px solid #066; position:relative; top:-1px; left:-152px; background:#FFC; padding:10px; }
+#fraction p { margin:0; font-family:微软雅黑; font-size:16px; line-height:30px; }
+#alert { text-align:center; }
+#qq{width: 800px; height: 84px; position: absolute;left:0;top:0;}
+#qq img{width: 60px; position: absolute; left:0; top:0; -display: none;}
+</style>
+</head>
+<script src="comm.js"></script>
+<script>
+	window.onload = function (){
+		var clickBtn = $("input")[0];
+		var imgWrap = $("#qq");	
+		var numberImg = $("img",imgWrap)[0];	//数字图片
+		var fraction = $("#fraction");
+		var aScore = $("p",fraction);
+
+		var arr = ["img/0.png","img/1.png","img/2.png","img/3.png","img/4.png","img/5.png","img/6.png","img/7.png","img/8.png","img/9.png"];
+		
+		var n = 10;
+		var m = 1;
+		var score = 0;	//得分
+		var onScore =0;	//失分
+		var timer = null;
+		var onOff = true;
+		
+		clickBtn.onclick = function (){
+			clickBtn.value = "游戏进行中...";
+			//numberImg.style.display = "block";
+			//numberImg.src = arr[ Math.floor(Math.random()*10) ];
+			var aNumber = Math.floor(Math.random()*740);//随机数left
+			timer = setInterval( function (){	//定时器
+				n--;
+				if ( n <= 0 ) {
+					n = 0;
+				};
+				numberImg.style.transition = "1."+ n +"s linear";
+				numberImg.style.top = "452px";
+				numberImg.src = arr[ Math.floor(Math.random()*10) ];
+				
+			},1500 );
+			//点击图片
+			numberImg.onclick = function (){
+				score++;
+				aScore[0].innerHTML = "得分："+ score +" 分";
+				clearInterval(timer);
+				numberImg.src = "img/day.png";
+				numberImg.style.transition = "0s linear";
+				//numberImg.style.display = "none";
+				fnShake(numberImg,"left",20);
+				//定时器
+				n--;
+				if ( n === 0 ) {
+					n = 1;
+				};				
+				timer = setInterval( function (){
+					//numberImg.style.display = "block";
+					numberImg.style.transition = "1."+ n +"s linear";
+					numberImg.style.top = "452px";
+					numberImg.src = arr[ Math.floor(Math.random()*10) ];
+				},1500 );
+			};
+
+			numberImg.addEventListener('webkitTransitionEnd',function (){
+				aNumber = Math.floor(Math.random()*740);
+				numberImg.style.cssText = 'transition:0 linear; left:'+ Math.floor(Math.random()*740) +'px; top:0px;';
+			})
+
+		}
+
+	}
+</script>
+<body>
+
+<div id="alert">
+	<h2>你的鼠标有多快？</h2>
+  <p>游戏说明：点击“开始游戏”，随机掉下数字图片，点中它，千万别让它掉下去！！</p>
+  <input type="button" value="开始游戏" />
+</div>
+<div id="box">
+	<div id="fraction">
+	  	<p>得分：0 分</p>
+	  	<p>失分：0 分</p>
+  	</div>
+	<div id="qq">
+  		<img src="img/0.png" />
+  	</div>
+</div>
+
+</body>
+</html>
