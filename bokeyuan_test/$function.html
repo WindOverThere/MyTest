@@ -1,0 +1,30 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title> 
+</head>
+<body>
+	<button id="clickBtn">点击</button>
+	<img id="dog" style="width:200px;" src="./img/dog1.jpg">
+
+	<script type="text/javascript">
+		var clickBtn = document.getElementById("clickBtn");
+		var dog = document.getElementById("dog");
+
+		var $ = function (id){
+			return document.getElementById(id);
+		};
+		console.log(HTMLElement.prototype);
+
+		HTMLElement.prototype.hide = function (){
+			this.style.display = "none";
+		};
+
+		$("clickBtn").onclick = function (){
+			$("dog").style.display = "none";
+		};
+
+	</script>
+</body>
+</html>
