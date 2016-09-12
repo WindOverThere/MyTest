@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>冒泡事件</title>
+    </head>
+    <body>
+        <input id= "btn" type="button" value="添加">
+        <ul id="box">
+            <li>11111</li>
+            <li>22222</li>
+            <li>33333</li>
+            <li>44444</li>
+            <li>55555</li>
+        </ul>
+        <script type="text/javascript">
+
+            var oUl = document.getElementById("box");
+            var aLi = document.getElementsByTagName("li");
+            var btnI = document.getElementById("btn");
+            var i = 5;
+
+            oUl.onmouseover = function (ev){
+                var e = ev || window.event;
+
+                if(e.target.nodeName == "LI"){
+                    e.target.style.background = "red";
+                    
+                }
+            };
+            oUl.onmouseout = function (ev){
+                var e = ev || window.event;
+
+                if(e.target.nodeName == "LI"){
+                    e.target.style.background = "";
+                    
+                }
+            };
+
+            btnI.onclick = function (){
+                i++;
+                var newLi = document.createElement("li");
+
+                newLi.innerHTML = 11111*i;
+
+                oUl.appendChild(newLi);
+
+            }
+
+
+
+
+        </script>
+    </body>
+</html>
