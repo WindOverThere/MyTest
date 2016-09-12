@@ -1,0 +1,29 @@
+<!doctype html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <title>标题</title> 
+</head>
+<body>
+	<script type="text/javascript">
+		var cars = new Array("aaa","bbb","ccc");
+
+		var cars = ["aaa","bbb","ccc"]
+
+
+		var objectPerson = {
+			aaa:111,
+			bbb:222,
+			ccc:333,
+			action:function (){
+				console.log(this.aaa + this.ccc)
+			}
+		}
+
+		//console.log(objectPerson.bbb)
+		//console.log(objectPerson["ccc"])
+
+		objectPerson.action();
+	</script>
+</body>
+</html>
