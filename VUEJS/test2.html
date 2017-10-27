@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <!-- <div id="app">
+            <p>页面载入时，input自动获取焦点</p>
+            <input type="text" v-focus>
+        </div>
+        <script>
+            Vue.directive('focus',{
+                inserted: function (el){
+                    el.focus()
+                }
+            })
+            new Vue({
+                el: "#app"
+            })
+        </script> -->
+
+        <!-- <div id="app">
+            <p>页面载入时自动获取焦点</p>
+            <input type="text" v-focus>
+        </div>
+        <script>
+            new Vue({
+                el: "#app",
+                directives: {
+                    focus: {
+                        inserted: function (el){
+                            el.focus()
+                        },
+                        bind: function (el,value){
+                            console.log(value)
+                        }
+                    }
+                }
+            })
+        </script> -->
+
+        <div id="app" v-runoob:hello.a.b="message">
+
+        </div>
+        <script>
+            Vue.directive("runoob",{
+                bind: function (el, binding, vnode){
+                    var s = JSON.stringify
+                    el.innerHTML = 
+                    'name: ' + s(binding.name) + '<br>' +
+                    'value: ' + s(binding.value) + '<br>' +
+                    'expression: ' + s(binding.expression) + '<br>' +
+                    'argument: ' + s(binding.arg) + '<br>' +
+                    'modifiers: ' + s(binding.modifiers) + '<br>' +
+                    'vnode keys: ' + Object.keys(vnode).join(', ')
+                }
+            })
+            new Vue({
+                el: "#app",
+                data: {
+                    message: "锋不动"
+                }
+            })
+        </script>
+    </body>
+</html>
