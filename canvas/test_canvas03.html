@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <title>计时器</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+      canvas{
+        background: #ddd;
+      }
+    </style>
+    <script src="http://code.createjs.com/easeljs-0.7.1.min.js"></script>
+   
+<script type="text/javascript">
+    function init(){
+        var canvas = document.getElementById("canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        var stage = new createjs.Stage(canvas);
+        createjs.Ticker.on('tick',stage);
+        var rect = new createjs.Shape();
+        rect.graphics.f("red").dc(300,300,100,100);
+        stage.addChild(rect);
+
+        function loop () {
+            rect.x+=1;
+            rect.scaleX+=0.01;
+            rect.scaleY+=0.01;
+            if(rect.x == 10 || rect.scaleX ==10 || rect.scaleY == 10){
+                rect.x = 0;
+                rect.scaleX = 0;
+                rect.scaleY = 0;
+            }
+            requestAnimationFrame(loop);
+        }
+        loop();
+    }
+</script>
+</head>
+<body onload="init()">
+    <canvas id="canvas" width="960" height="800"></canvas>
+</body>
+</html>

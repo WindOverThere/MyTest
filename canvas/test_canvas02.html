@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <title>计时器</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+      canvas{
+        background: #ddd;
+      }
+    </style>
+    <script src="http://code.createjs.com/easeljs-0.7.1.min.js"></script>
+   
+  <script type="text/javascript">
+  var canvas;
+  var stage;
+  var shape;
+  function init() { 
+      canvas = document.getElementById('myCanvas');
+      width = canvas.width;
+      height = canvas.height;
+      stage = new createjs.Stage(canvas);
+      
+      dayuan1();
+      //动画的关键就是TICKER
+      createjs.Ticker.addEventListener("tick", handleTick);
+      stage.update();
+  }
+  // 绘制大圆
+  function dayuan1(){
+    shape = new createjs.Shape();
+    shape.graphics.f("red").dc(0,100,50);
+    stage.addChild(shape);
+      console.log(shape)
+  }
+// 动画句柄
+  function handleTick(){
+    if (shape.x>width) {
+      shape.x=0;
+    }else{
+      shape.x+=10;
+    //   shape.scaleX += 0.1
+    //   shape.scaleY += 0.1
+    } 
+    stage.update();
+  }
+  
+  </script>
+</head>
+<body onload="init()">
+    <canvas id="myCanvas" width="960" height="800"></canvas>
+</body>
+</html>
