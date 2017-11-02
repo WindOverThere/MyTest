@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue-教程 - 计算属性和观察者</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <!-- <div id="example">
+            {{message.split("").reverse().join("")}}
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#example",
+                data: {
+                    message: "???fengbudong!!!"
+                }
+            })
+        </script> -->
+
+        <!-- <div id="example">
+            <p>Original message: "{{ message }}"</p>
+            <p>Computed reverse message: "{{ reversedMessage }}"</p>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#example",
+                data: {
+                    message: "?fengbudongoverthere!"
+                },
+                methods: {
+                    reversedMessage: function (){
+                        return this.message.split("").reverse().join("")
+                    }
+                }
+            })
+        </script> -->
+
+        <!-- <div id="demo">{{ fullName }}</div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    firstName: "Feng",
+                    lastName: "budong",
+                    fullName: "Feng budong"
+                },
+                watch: {
+                    firstName: function (val){
+                        this.fullName = val + ' ' + this.lastName;
+                    },
+                    lastName: function (val){
+                        this.fullName = this.firstName + ' ' + val;
+                    }
+                }
+            })
+        </script> -->
+
+        <!-- <div id="demo">{{ fullName }}</div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    firstName: "Feng",
+                    lastName: "budong",
+                    fullName: "Feng budong"
+                },
+                compited: {
+                    fullName:{
+                        get: function (){
+                            return this.firstName + " " + lastName;
+                        },
+                        set: function (newVal){
+                            var names = newVal.split('');
+                            this.firstName = names[0];
+                            this,lastName = names[1];
+                        }
+                    }
+                }
+            })
+            vm.fullName = "wind over";
+            console.log(vm.lastName + "----" + vm.firstName)
+        </script> -->
+
+
+        <div id="watch-example">
+            <p>
+                Ask a yes/no question:
+                <input type="text" v-model="question">
+            </p>
+            <p>{{ answer }}</p>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+        <script>
+            var ExampleVM = new Vue({
+                el: "#watch-example",
+                data: {
+                    question: " ",
+                    answer: 'I cannot give you an answer until you ask a queswer!'
+                },
+                watch: {
+                    question: function (){
+                        this.answer = "Waiting for you to stop typing...";
+                        this.getAnswer()
+                    }
+                },
+                methods: {
+                    getAnswer: _.debounce(
+                        function (){
+                            if (this.question.indexOf("?") === -1){
+                                this.answer = "Question usually contain a question mark. ;-)"
+                                return
+                            }
+                            this.answer = "thinking..."
+                            var vm = this
+                            axios.get("https://yesno.wtf/api")
+                                .then(function (response){
+                                    vm.answer = _.capitalize(response.data.answer)
+                                })
+                                .catch(function (error){
+                                    vm.answer = "Error! Counld not reach the API." + error
+                                })
+                        },
+                        500
+                    )
+                }
+            })
+        </script>
+    </body>
+</html>
