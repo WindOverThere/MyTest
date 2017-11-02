@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue-教程 - 模板语法</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <p v-once>{{message}}</p>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#app",
+                data: {
+                    message: "chengjunfeng"
+                }
+            })
+            vm.message = ""
+        </script>
+    </body>
+</html>
