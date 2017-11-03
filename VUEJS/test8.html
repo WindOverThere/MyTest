@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue-教程 - 条件渲染</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <!-- <div id="demo">
+                            <h1 v-if="ok">Yes!</h1>
+                            <h1 v-else>No!</h1>
+
+            <template v-if="ok">
+                <h1>Title</h1>
+                <p>Paragraph 1</p>
+                <p>Paragraph 2</p>
+            </template>
+
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    ok: true
+                }
+            })
+        </script> -->
+
+        <!-- <div id="demo">
+            <div v-if="Math.random() > 0.5">
+                now you see me
+            </div>
+            <div v-else>
+                now you don't
+            </div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo"
+            })
+        </script> -->
+
+        <div id="demo">
+            <div v-if="type === 'A'">
+                A
+            </div>
+            <div v-else-if="type === 'B'">
+                B
+            </div>
+            <div v-else-if="type === 'C'">
+                C
+            </div>
+            <div v-else="type === 'D'">
+                D
+            </div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    type: "C"
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -8,9 +8,108 @@
         <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
         <style>
 
+            div{
+                width: 100px;
+                height: 100px;
+                background: blue;
+            }
+            .active{
+                background: red;
+            }
+            .text-danger{
+                color: white;
+            }
         </style>
     </head>
     <body>
+        <!-- 对象语法 -->
 
+        <!-- <div id="demo">
+            <div v-bind:class="{ active: isActive, 'text-danger': hasError}">hello!!</div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    isActive: true,
+                    hasError: true
+                }
+            })
+        </script> -->
+
+        <!-- <div id="demo">
+            <div v-bind:class="classObj">hello!!</div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    classObj:{
+                        active: true,
+                        'text-danger': true
+                    }
+                }
+            })
+        </script> -->
+
+        <!-- <div id="demo">
+            <div v-bind:class="classObj">hello!!</div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    isActive: true,
+                    error: {
+                        type: 'fatal'
+                    }
+                },
+                computed: {
+                    classObj: function (){
+                        return {
+                            active: this.isActive && this.error,
+                            'text-danger': this.error && this.error.type === 'fatal'
+                        }
+                    }
+                }
+            })
+        </script> -->
+
+        <!-- 数组语法 -->
+
+        <!-- <div id="demo">
+            <div v-bind:class="[activeClass, errorClass]">hello!!</div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    activeClass: 'active',
+                    errorClass: 'text-danger'
+                }
+            })
+        </script> -->
+
+        <!-- 绑定内联样式 -->
+
+        <div id="demo">
+            <!-- <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">绑定内联样式</div> -->
+            <div v-bind:style="styleObj">绑定内联样式</div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                // data: {
+                //     activeColor: 'red',
+                //     fontSize: 24
+                // }
+                data: {
+                    styleObj: {
+                        color: 'red',
+                        fontSize: '24px'
+                    }
+                }
+            })
+        </script>
     </body>
 </html>
