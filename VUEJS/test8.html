@@ -45,7 +45,7 @@
             })
         </script> -->
 
-        <div id="demo">
+        <!-- <div id="demo">
             <div v-if="type === 'A'">
                 A
             </div>
@@ -64,6 +64,18 @@
                 el: "#demo",
                 data: {
                     type: "C"
+                }
+            })
+        </script> -->
+
+        <div id="demo">
+            <p v-show="ok">hello</p>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    ok: true
                 }
             })
         </script>
