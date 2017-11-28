@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue-教程 - 事件处理</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    </head>
+    <body>
+        <!-- <div id="demo">
+            <button v-on:click="greek">greet</button>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    name: 'budong'
+                },
+                methods: {
+                    greek: function (event){
+                        console.log(this,this.$el.innerHTML)
+                    }
+                }
+            })
+            vm.greek()
+        </script> -->
+
+
+        <div id="demo">
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checkbox">{{ checked }}</label>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    checked: false
+                },
+                methods: {
+                    checked: function (){
+                        if(!this.checked){
+                            return this.checked
+                        }
+                    }
+                }
+            })
+        </script>
+
+        <!-- <div id="demo">
+            <input type="checkbox" id="feng" value="Feng" v-model="checkedNames">
+            <label for="feng">Feng</label>
+            <input type="checkbox" id="bu" value="Bu" v-model="checkedNames">
+            <label for="bu">Bu</label>
+            <input type="checkbox" id="dong" value="Dong" v-model="checkedNames">
+            <label for="dong">Dong</label>
+            <br>
+            <span>{{ checkedNames }}</span>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#demo",
+                data: {
+                    checkedNames: []
+                }
+            })
+        </script> -->
+    </body>
+</html>
