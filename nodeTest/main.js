@@ -1,23 +1,58 @@
-'use strict';
-var http = require('http');
-var url = require('url');
-var router = require('./module/router');
+// var fs = require("fs");
 
-var server = http.createServer();
-server.on('request',function(req, res){
-	if(req.url != '/favicon.ico'){
-		let pathname = url.parse(req.url).pathname;
-		pathname = pathname.match(/\w+/)[0];
-		try{
-			router[pathname](req, res); 	
-		}catch(e){
-			res.writeHead(200, {'Content-Type':'text/html'});
-			res.write('not found 404!');
-			res.end();
-		};
-	}else{
-		res.end();
-	};   
-}).listen('80');
+// var data = fs.readFileSync("input.txt");
+// console.log(data.toString())
+// console.log("结束了")
 
-console.log('Server running!123');
+// var fs = require("fs");
+
+// fs.readFile("input.txt", function (err, data){
+// 	if(err) return console.error(err)
+// 	console.log(data.toString())
+// })
+
+// console.log("结束了")
+
+
+
+
+// var events = require("events");
+// var eventEmitter = new events.EventEmitter();
+// var connectHandler = function connected(){
+// 	console.log("连接成功！")
+// 	eventEmitter.emit("data_received")
+// }
+// eventEmitter.on("connection", connectHandler);
+// eventEmitter.on('data_received', function(){
+// 	console.log('数据接收成功。');
+//  });
+ 
+// eventEmitter.emit("connection")
+// console.log("程序执行结束")
+
+
+
+// var events = require('events');
+// var eventEmitter = new events.EventEmitter();
+// var listener1 = function  listener1(){
+// 	console.log("监听器  listener1 执行")
+// }
+// var listener2 = function listener2(){
+// 	console.log("监听器 listener2 执行")
+// }
+// eventEmitter.addListener('connection', listener1);
+// eventEmitter.on('connection', listener2)
+
+// var eventListeners = events.EventEmitter.listenerCount(eventEmitter,'connection');
+// console.log(eventListeners + "个监听器监听链接事件。")
+
+// eventEmitter.removeListener("connection", listener1);
+// console.log("listener1 不再受监听。")
+// eventEmitter.emit("connection");
+// eventListeners = events.EventEmitter.listenerCount(eventEmitter,'connection')
+// console.log(eventListeners + "个监听器监听连续事件。")
+// console.log("程序执行完毕。")
+
+var events = require("events");
+var emitter = new events.EventEmitter();
+emitter.emit("error")
