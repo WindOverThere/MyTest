@@ -53,6 +53,31 @@
 // console.log(eventListeners + "个监听器监听连续事件。")
 // console.log("程序执行完毕。")
 
-var events = require("events");
-var emitter = new events.EventEmitter();
-emitter.emit("error")
+// var events = require("events");
+// var emitter = new events.EventEmitter();
+// emitter.emit("error")
+
+
+// function printHello(){
+//     console.log("Hello World!")
+// }
+// setInterval(printHello, 2000)
+
+
+
+//console
+// console.info("程序开始执行")
+// var counter = 10;
+// console.log("计数：%d", counter)
+// console.time("获取数据")
+// console.timeEnd("获取数据")
+// console.info("程序执行完毕。")
+
+
+process.on("exit", function (code){
+    setTimeout(function (){
+        console.log("该代码不会执行")
+    },0)
+    console.log("推出码为：", code)
+})
+console.log("程序执行结束")
