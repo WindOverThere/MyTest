@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+        <style>
+            .red{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" placeholder="请输入" v-model="message">
+            <p v-html="message" v-bind:class="{red: red}"></p>
+            <!-- <p v-text="message"></p> -->
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function (){
+
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message:'<span>我是个标签</span>',
+                        red: true
+                    },
+                    method: {
+                        test(){
+                            alert(1)
+                        }
+                    }
+
+                })
+
+            },false)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <div>
+                <router-link to="/home">主页</router-link>
+                <router-link to="/news">新闻</router-link>
+            </div>
+            <div>
+                <router-view></router-view>
+            </div>
+        </div>
+        <template id="news">
+            <div>
+                <h2>我是新闻页面</h2>
+                <ul>
+                    <li>
+                        <router-link to="/news/detail/001?a=1">详细新闻1</router-link>
+                        <router-link to="/news/detail/002">详细新闻2</router-link>
+                        <router-link to="/news/detail/003">详细新闻3</router-link>
+                    </li>
+                    <div>
+                        <router-view></router-view>
+                    </div>
+                </ul>
+            </div>
+        </template>
+        <script>
+            document.addEventListener("DOMContentLoaded", function (){
+                var Home = {
+                    template: '<h2>我是主页</h2>'
+                };
+                var News = {
+                    template: '#news'
+                };
+                var Detail = {
+                    template: '<p>{{ $route.params }} => {{ $route.query }} => {{ $route.path }}</p>'
+                }
+                const routes = [
+                    {   
+                        path:'/home',
+                        component:Home
+                    },
+                    {
+                        path:'/news',
+                        component:News,
+                        children: [
+                            {
+                                path:'detail/:id',
+                                component: Detail
+                            }
+                        ]
+                    },
+                    {
+                        path:'*',
+                        redirect:'/home'
+                    }
+                ]
+                const router = new VueRouter({
+                    routes
+                })
+                const vm = new Vue({
+                    el: "#app",
+                    router
+                })
+            })
+        </script>
+    </body>
+</html>

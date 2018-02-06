@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-color="colorStatus" v-for="(val,key) in fruitsArr">{{ val }} =》 {{ key }}</li>
+            </ul>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function (){
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        colorStatus: false,
+                        fruitsArr:['apple','banana','orange','pear'],
+                    },
+                    directives: {
+                        "color": function (el,binding){
+                            el.style.backgroundColor = "green";
+                        }
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

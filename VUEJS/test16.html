@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <input type="button" value="改变" @click="change" />
+            {{ myData }}
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function (){
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        num: 1
+                    },
+                    computed: {
+                        myData: {
+                            get: function (){
+                                alert('get');
+                                return this.num + 2;
+                            },
+                            set: function (val){
+                                alert('set');
+                                return this.num=val;
+                            }
+                        }
+                    },
+                    methods: {
+                        change(){
+                            this.myData=10;
+                        }
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

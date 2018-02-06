@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    </head>
+    <body>
+        <div class="app">
+            <my-component></my-component>
+            <common></common>
+        </div>
+        <script type="x-template" id="coponent1">
+            <h3>定义方式1</h3>  
+        </script>
+        <template id="component2">
+            <h3>定义方式2</h3>
+        </template>
+        <script>
+            document.addEventListener("DOMContentLoaded", function (){
+                var child = {
+                    template:'#coponent1'
+                };
+                var common = {
+                    template: '#coponent2'
+                };
+                var vm = new Vue({
+                    el: ".app",
+                    components: {
+                        myComponent: child,
+                        common
+                    }
+                })
+
+            })
+        </script>
+    </body>
+</html>
